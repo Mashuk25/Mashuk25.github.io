@@ -1,0 +1,551 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Md Mashuk E Lahi — Portfolio</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  :root {
+    --navy: #2C5F7A;
+    --teal: #4A90A4;
+    --teal-light: #E8F4F8;
+    --teal-mid: #B8DDE8;
+    --teal-dark: #1B4A5C;
+    --text: #2A2A2A;
+    --text-muted: #5A6A72;
+    --bg: #F7FBFD;
+    --white: #FFFFFF;
+    --border: #C8DDE6;
+  }
+
+  body {
+    font-family: 'Segoe UI', Arial, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.7;
+  }
+
+  /* NAV */
+  nav {
+    background: var(--white);
+    border-bottom: 1px solid var(--border);
+    padding: 0 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 56px;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+  nav .logo {
+    font-weight: 700;
+    font-size: 1rem;
+    color: var(--navy);
+    letter-spacing: 0.5px;
+  }
+  nav ul {
+    list-style: none;
+    display: flex;
+    gap: 2rem;
+  }
+  nav a {
+    text-decoration: none;
+    font-size: 0.875rem;
+    color: var(--text-muted);
+    transition: color 0.2s;
+  }
+  nav a:hover { color: var(--teal); }
+
+  /* HERO */
+  .hero {
+    background: linear-gradient(135deg, var(--navy) 0%, var(--teal) 100%);
+    color: white;
+    padding: 5rem 2rem 4rem;
+    text-align: center;
+  }
+  .hero-avatar {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.2);
+    border: 2px solid rgba(255,255,255,0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.75rem;
+    font-weight: 700;
+    color: white;
+    margin: 0 auto 1.5rem;
+  }
+  .hero h1 {
+    font-size: 2.2rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+    letter-spacing: -0.5px;
+  }
+  .hero .tagline {
+    font-size: 1.05rem;
+    opacity: 0.88;
+    margin-bottom: 1.5rem;
+    font-weight: 400;
+  }
+  .hero .location {
+    font-size: 0.85rem;
+    opacity: 0.7;
+    margin-bottom: 2rem;
+  }
+  .hero-links {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    padding: 0.55rem 1.25rem;
+    border-radius: 6px;
+    font-size: 0.875rem;
+    font-weight: 500;
+    text-decoration: none;
+    transition: all 0.2s;
+    cursor: pointer;
+    border: none;
+  }
+  .btn-white {
+    background: white;
+    color: var(--navy);
+  }
+  .btn-white:hover { background: var(--teal-light); }
+  .btn-outline {
+    background: transparent;
+    color: white;
+    border: 1.5px solid rgba(255,255,255,0.6);
+  }
+  .btn-outline:hover { background: rgba(255,255,255,0.15); }
+
+  /* SECTIONS */
+  section {
+    max-width: 860px;
+    margin: 0 auto;
+    padding: 3.5rem 2rem;
+  }
+  section + section {
+    padding-top: 0;
+  }
+  h2 {
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: var(--navy);
+    margin-bottom: 1.5rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid var(--teal-mid);
+    letter-spacing: 0.3px;
+  }
+
+  /* ABOUT */
+  .about-card {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 1.75rem;
+    color: var(--text-muted);
+    font-size: 0.97rem;
+    line-height: 1.8;
+  }
+  .about-card strong { color: var(--navy); }
+
+  /* PROJECT */
+  .project-card {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    overflow: hidden;
+  }
+  .project-header {
+    background: var(--navy);
+    padding: 1.25rem 1.75rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+  .project-header h3 {
+    color: white;
+    font-size: 1.15rem;
+    font-weight: 700;
+    margin-bottom: 0.2rem;
+  }
+  .project-header p {
+    color: rgba(255,255,255,0.75);
+    font-size: 0.85rem;
+  }
+  .project-body { padding: 1.5rem 1.75rem; }
+  .project-desc {
+    font-size: 0.93rem;
+    color: var(--text-muted);
+    margin-bottom: 1.25rem;
+    line-height: 1.75;
+  }
+  .tech-stack {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+    margin-bottom: 1.25rem;
+  }
+  .tag {
+    background: var(--teal-light);
+    color: var(--teal-dark);
+    font-size: 0.78rem;
+    font-weight: 500;
+    padding: 0.25rem 0.65rem;
+    border-radius: 20px;
+    border: 1px solid var(--teal-mid);
+  }
+  .project-meta {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 0.75rem;
+  }
+  .meta-item {
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 0.75rem 1rem;
+  }
+  .meta-item .meta-label {
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    margin-bottom: 0.2rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+  .meta-item .meta-val {
+    font-size: 0.88rem;
+    color: var(--navy);
+    font-weight: 500;
+  }
+  .coming-soon {
+    background: var(--white);
+    border: 1.5px dashed var(--border);
+    border-radius: 10px;
+    padding: 2rem;
+    text-align: center;
+    color: var(--text-muted);
+    font-size: 0.92rem;
+    margin-top: 1rem;
+  }
+  .coming-soon span {
+    display: block;
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+    opacity: 0.4;
+  }
+
+  /* SKILLS */
+  .skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 1rem;
+  }
+  .skill-group {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 1.25rem;
+  }
+  .skill-group h4 {
+    font-size: 0.82rem;
+    font-weight: 700;
+    color: var(--teal);
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    margin-bottom: 0.85rem;
+  }
+  .skill-group ul {
+    list-style: none;
+  }
+  .skill-group li {
+    font-size: 0.88rem;
+    color: var(--text-muted);
+    padding: 0.2rem 0;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  .skill-group li::before {
+    content: '';
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background: var(--teal-mid);
+    flex-shrink: 0;
+  }
+
+  /* EDUCATION & EXPERIENCE */
+  .timeline { display: flex; flex-direction: column; gap: 1rem; }
+  .timeline-item {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-left: 3px solid var(--teal);
+    border-radius: 0 8px 8px 0;
+    padding: 1.1rem 1.4rem;
+  }
+  .timeline-item .tl-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+  .timeline-item h4 {
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: var(--navy);
+    margin-bottom: 0.15rem;
+  }
+  .timeline-item .org {
+    font-size: 0.85rem;
+    color: var(--teal);
+  }
+  .timeline-item .date {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    white-space: nowrap;
+  }
+  .timeline-item .note {
+    font-size: 0.83rem;
+    color: var(--text-muted);
+    margin-top: 0.4rem;
+    font-style: italic;
+  }
+
+  /* CONTACT */
+  .contact-card {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 1.75rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+  .contact-row {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    font-size: 0.92rem;
+    color: var(--text-muted);
+  }
+  .contact-row svg {
+    width: 18px;
+    height: 18px;
+    stroke: var(--teal);
+    flex-shrink: 0;
+  }
+  .contact-row a {
+    color: var(--teal);
+    text-decoration: none;
+  }
+  .contact-row a:hover { text-decoration: underline; }
+
+  /* FOOTER */
+  footer {
+    text-align: center;
+    padding: 2rem;
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    border-top: 1px solid var(--border);
+  }
+
+  @media (max-width: 600px) {
+    .hero h1 { font-size: 1.6rem; }
+    nav ul { gap: 1rem; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="logo">Mashuk E Lahi</div>
+  <ul>
+    <li><a href="#about">About</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<div class="hero">
+  <div class="hero-avatar">MB</div>
+  <h1>Md Mashuk E Lahi</h1>
+  <p class="tagline">Electronics &amp; Software Engineer &nbsp;·&nbsp; MSE Student, Yoobee Colleges</p>
+  <p class="location">📍 Auckland, New Zealand</p>
+  <div class="hero-links">
+    <a href="https://github.com/Mashuk25" class="btn btn-white" target="_blank">GitHub</a>
+    <a href="mailto:elahimashukh@gmail.com" class="btn btn-outline">Email me</a>
+  </div>
+</div>
+
+<section id="about">
+  <h2>About</h2>
+  <div class="about-card">
+    Engineer with <strong>7 years of hands-on experience</strong> across hardware, embedded systems, and IoT deployments in Bangladesh. Now based in Auckland completing a <strong>Master of Software Engineering</strong> at Yoobee Colleges, actively building full-stack software skills alongside my electronics background.
+    <br><br>
+    Comfortable working across the stack — from PCB design and sensor calibration to REST APIs and cloud deployment. I adapt quickly to new tools, teams, and environments.
+  </div>
+</section>
+
+<section id="projects">
+  <h2>Projects</h2>
+  <div class="project-card">
+    <div class="project-header">
+      <div>
+        <h3>SureSource</h3>
+        <p>Farm-to-Business B2B Marketplace &nbsp;·&nbsp; MSE800 coursework, sole developer</p>
+      </div>
+      <a href="https://github.com/Mashuk25/SureSource_v1.00" target="_blank" class="btn btn-outline" style="font-size:0.8rem; padding:0.4rem 0.9rem;">View on GitHub</a>
+    </div>
+    <div class="project-body">
+      <p class="project-desc">
+        A full-stack B2B marketplace connecting NZ farmers directly with restaurants, hotels, and retailers.
+        Includes multi-role authentication (buyers, farmers, admins), full order lifecycle management,
+        automated delivery cost calculation (Haversine formula), and a bilingual UI in English and Te Reo Māori
+        aligned with Te Tiriti o Waitangi principles. Deployed live on Render (backend) and Vercel (frontend).
+      </p>
+      <div class="tech-stack">
+        <span class="tag">Django REST Framework</span>
+        <span class="tag">React</span>
+        <span class="tag">PostgreSQL</span>
+        <span class="tag">Docker</span>
+        <span class="tag">JWT Auth</span>
+        <span class="tag">Cloudinary</span>
+        <span class="tag">Render</span>
+        <span class="tag">Vercel</span>
+        <span class="tag">Chart.js</span>
+      </div>
+      <div class="project-meta">
+        <div class="meta-item">
+          <div class="meta-label">Type</div>
+          <div class="meta-val">Full-stack web app</div>
+        </div>
+        <div class="meta-item">
+          <div class="meta-label">Status</div>
+          <div class="meta-val">Live &amp; deployed</div>
+        </div>
+        <div class="meta-item">
+          <div class="meta-label">Role</div>
+          <div class="meta-val">Sole developer</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="coming-soon">
+    <span>🚧</span>
+    More projects coming soon — IoT, data analysis, and embedded systems work.
+  </div>
+</section>
+
+<section id="skills">
+  <h2>Skills</h2>
+  <div class="skills-grid">
+    <div class="skill-group">
+      <h4>Hardware &amp; Electronics</h4>
+      <ul>
+        <li>PCB design (Eagle, KiCad)</li>
+        <li>Microcontrollers (ESP32, Arduino)</li>
+        <li>Sensor calibration &amp; validation</li>
+        <li>DC/AC circuit troubleshooting</li>
+        <li>Soldering &amp; circuit assembly</li>
+        <li>Multimeter &amp; signal testing</li>
+      </ul>
+    </div>
+    <div class="skill-group">
+      <h4>Software &amp; Web</h4>
+      <ul>
+        <li>Python · Embedded C/C++</li>
+        <li>Django REST Framework</li>
+        <li>React · PostgreSQL</li>
+        <li>Docker · Git &amp; GitHub</li>
+        <li>Cloud deployment (Render, Vercel)</li>
+        <li>JWT Authentication</li>
+      </ul>
+    </div>
+    <div class="skill-group">
+      <h4>IoT &amp; Connectivity</h4>
+      <ul>
+        <li>MQTT · LoRa · GSM</li>
+        <li>Wi-Fi · BLE</li>
+        <li>Smart home automation</li>
+        <li>Environmental monitoring</li>
+        <li>Data pipeline &amp; dashboards</li>
+      </ul>
+    </div>
+    <div class="skill-group">
+      <h4>Data &amp; Tools</h4>
+      <ul>
+        <li>Microsoft Power BI</li>
+        <li>Technical documentation</li>
+        <li>Client training &amp; field support</li>
+        <li>Cloud security (studying)</li>
+        <li>Blockchain fundamentals (studying)</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section id="education">
+  <h2>Education</h2>
+  <div class="timeline">
+    <div class="timeline-item">
+      <div class="tl-top">
+        <div>
+          <h4>Master of Software Engineering</h4>
+          <div class="org">Yoobee College of Creative Innovation, Auckland</div>
+        </div>
+        <div class="date">2025 – Ongoing</div>
+      </div>
+      <div class="note">Courses: Professional Software Engineering · Cloud Security · Blockchain & Decentralised Identity · Intelligent Transportation Systems · Data Analytics with Power BI</div>
+    </div>
+    <div class="timeline-item">
+      <div class="tl-top">
+        <div>
+          <h4>B.Sc. Electronics &amp; Telecommunications Engineering</h4>
+          <div class="org">East West University, Bangladesh &nbsp;·&nbsp; GPA 3.18 / 4.0</div>
+        </div>
+        <div class="date">2012 – 2016</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="contact">
+  <h2>Contact</h2>
+  <div class="contact-card">
+    <div class="contact-row">
+      <svg fill="none" viewBox="0 0 24 24" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75"/></svg>
+      <a href="mailto:elahimashukh@gmail.com">elahimashukh@gmail.com</a>
+    </div>
+    <div class="contact-row">
+      <svg fill="none" viewBox="0 0 24 24" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M17.25 6.75L22.5 12l-5.25 5.25m-10.5 0L1.5 12l5.25-5.25m7.5-3l-4.5 16.5"/></svg>
+      <a href="https://github.com/Mashuk25" target="_blank">github.com/Mashuk25</a>
+    </div>
+    <div class="contact-row">
+      <svg fill="none" viewBox="0 0 24 24" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M15 10.5a3 3 0 11-6 0 3 3 0 016 0z"/><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z"/></svg>
+      Auckland, New Zealand
+    </div>
+  </div>
+</section>
+
+<footer>
+  &copy; 2026 Md Mashuk E Lahi &nbsp;·&nbsp; Auckland, New Zealand
+</footer>
+
+</body>
+</html>
