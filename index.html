@@ -3,549 +3,769 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Md Mashuk E Lahi — Portfolio</title>
+<title>Md Mashuk E Lahi — IoT & Embedded Systems Engineer</title>
 <style>
-  * { margin: 0; padding: 0; box-sizing: border-box; }
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
   :root {
-    --navy: #2C5F7A;
-    --teal: #4A90A4;
-    --teal-light: #E8F4F8;
-    --teal-mid: #B8DDE8;
-    --teal-dark: #1B4A5C;
-    --text: #2A2A2A;
-    --text-muted: #5A6A72;
-    --bg: #F7FBFD;
-    --white: #FFFFFF;
-    --border: #C8DDE6;
+    --navy:      #1E3A4F;
+    --teal:      #2E8B9A;
+    --teal-mid:  #4AABB8;
+    --teal-light:#E4F4F7;
+    --teal-glow: #2E8B9A22;
+    --accent:    #F0A500;
+    --text:      #1A2530;
+    --muted:     #556070;
+    --bg:        #F5FAFB;
+    --white:     #FFFFFF;
+    --border:    #C5DDE4;
+    --card-bg:   #FFFFFF;
   }
 
+  html { scroll-behavior: smooth; }
+
   body {
-    font-family: 'Segoe UI', Arial, sans-serif;
+    font-family: 'Segoe UI', system-ui, sans-serif;
     background: var(--bg);
     color: var(--text);
     line-height: 1.7;
+    overflow-x: hidden;
   }
 
-  /* NAV */
+  /* ── NAV ── */
   nav {
-    background: var(--white);
+    position: fixed; top: 0; left: 0; right: 0; z-index: 200;
+    background: rgba(255,255,255,0.92);
+    backdrop-filter: blur(10px);
     border-bottom: 1px solid var(--border);
-    padding: 0 2rem;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    height: 56px;
-    position: sticky;
-    top: 0;
-    z-index: 100;
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 0 2rem; height: 58px;
   }
-  nav .logo {
-    font-weight: 700;
-    font-size: 1rem;
-    color: var(--navy);
-    letter-spacing: 0.5px;
-  }
-  nav ul {
-    list-style: none;
-    display: flex;
-    gap: 2rem;
-  }
-  nav a {
-    text-decoration: none;
-    font-size: 0.875rem;
-    color: var(--text-muted);
-    transition: color 0.2s;
-  }
+  .nav-logo { font-weight: 800; font-size: 1rem; color: var(--navy); letter-spacing: 0.3px; }
+  .nav-logo span { color: var(--teal); }
+  nav ul { list-style: none; display: flex; gap: 1.8rem; }
+  nav a { text-decoration: none; font-size: 0.85rem; color: var(--muted); font-weight: 500; transition: color 0.2s; }
   nav a:hover { color: var(--teal); }
+  .nav-cta {
+    background: var(--teal); color: white !important; padding: 0.35rem 1rem;
+    border-radius: 20px; font-size: 0.8rem !important;
+  }
+  .nav-cta:hover { background: var(--navy) !important; }
 
-  /* HERO */
+  /* ── HERO ── */
   .hero {
-    background: linear-gradient(135deg, var(--navy) 0%, var(--teal) 100%);
-    color: white;
-    padding: 5rem 2rem 4rem;
-    text-align: center;
+    min-height: 100vh;
+    background: linear-gradient(135deg, var(--navy) 0%, #164060 40%, var(--teal) 100%);
+    display: flex; align-items: center; justify-content: center;
+    padding: 6rem 2rem 4rem;
+    position: relative; overflow: hidden;
   }
-  .hero-avatar {
-    width: 80px;
-    height: 80px;
+  .hero::before {
+    content: '';
+    position: absolute; inset: 0;
+    background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Ccircle cx='30' cy='30' r='2'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+  }
+  .hero-inner {
+    display: flex; align-items: center; gap: 4rem;
+    max-width: 960px; width: 100%; position: relative; z-index: 1;
+  }
+  .hero-photo-wrap {
+    flex-shrink: 0;
+    width: 200px; height: 200px;
     border-radius: 50%;
-    background: rgba(255,255,255,0.2);
-    border: 2px solid rgba(255,255,255,0.5);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 1.75rem;
-    font-weight: 700;
-    color: white;
-    margin: 0 auto 1.5rem;
-  }
-  .hero h1 {
-    font-size: 2.2rem;
-    font-weight: 700;
-    margin-bottom: 0.5rem;
-    letter-spacing: -0.5px;
-  }
-  .hero .tagline {
-    font-size: 1.05rem;
-    opacity: 0.88;
-    margin-bottom: 1.5rem;
-    font-weight: 400;
-  }
-  .hero .location {
-    font-size: 0.85rem;
-    opacity: 0.7;
-    margin-bottom: 2rem;
-  }
-  .hero-links {
-    display: flex;
-    gap: 1rem;
-    justify-content: center;
-    flex-wrap: wrap;
-  }
-  .btn {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.4rem;
-    padding: 0.55rem 1.25rem;
-    border-radius: 6px;
-    font-size: 0.875rem;
-    font-weight: 500;
-    text-decoration: none;
-    transition: all 0.2s;
-    cursor: pointer;
-    border: none;
-  }
-  .btn-white {
-    background: white;
-    color: var(--navy);
-  }
-  .btn-white:hover { background: var(--teal-light); }
-  .btn-outline {
-    background: transparent;
-    color: white;
-    border: 1.5px solid rgba(255,255,255,0.6);
-  }
-  .btn-outline:hover { background: rgba(255,255,255,0.15); }
-
-  /* SECTIONS */
-  section {
-    max-width: 860px;
-    margin: 0 auto;
-    padding: 3.5rem 2rem;
-  }
-  section + section {
-    padding-top: 0;
-  }
-  h2 {
-    font-size: 1.2rem;
-    font-weight: 700;
-    color: var(--navy);
-    margin-bottom: 1.5rem;
-    padding-bottom: 0.5rem;
-    border-bottom: 2px solid var(--teal-mid);
-    letter-spacing: 0.3px;
-  }
-
-  /* ABOUT */
-  .about-card {
-    background: var(--white);
-    border: 1px solid var(--border);
-    border-radius: 10px;
-    padding: 1.75rem;
-    color: var(--text-muted);
-    font-size: 0.97rem;
-    line-height: 1.8;
-  }
-  .about-card strong { color: var(--navy); }
-
-  /* PROJECT */
-  .project-card {
-    background: var(--white);
-    border: 1px solid var(--border);
-    border-radius: 10px;
+    border: 4px solid rgba(255,255,255,0.25);
+    box-shadow: 0 0 0 8px rgba(46,139,154,0.25), 0 20px 60px rgba(0,0,0,0.3);
     overflow: hidden;
+    background: rgba(255,255,255,0.1);
+    position: relative;
+    cursor: pointer;
   }
-  .project-header {
-    background: var(--navy);
-    padding: 1.25rem 1.75rem;
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
-    gap: 1rem;
-    flex-wrap: wrap;
+  .hero-photo-wrap img {
+    width: 100%; height: 100%; object-fit: cover; display: block;
   }
-  .project-header h3 {
-    color: white;
-    font-size: 1.15rem;
-    font-weight: 700;
-    margin-bottom: 0.2rem;
-  }
-  .project-header p {
-    color: rgba(255,255,255,0.75);
-    font-size: 0.85rem;
-  }
-  .project-body { padding: 1.5rem 1.75rem; }
-  .project-desc {
-    font-size: 0.93rem;
-    color: var(--text-muted);
-    margin-bottom: 1.25rem;
-    line-height: 1.75;
-  }
-  .tech-stack {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.4rem;
-    margin-bottom: 1.25rem;
-  }
-  .tag {
-    background: var(--teal-light);
-    color: var(--teal-dark);
-    font-size: 0.78rem;
-    font-weight: 500;
-    padding: 0.25rem 0.65rem;
-    border-radius: 20px;
-    border: 1px solid var(--teal-mid);
-  }
-  .project-meta {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-    gap: 0.75rem;
-  }
-  .meta-item {
-    background: var(--bg);
-    border: 1px solid var(--border);
-    border-radius: 8px;
-    padding: 0.75rem 1rem;
-  }
-  .meta-item .meta-label {
-    font-size: 0.75rem;
-    color: var(--text-muted);
-    margin-bottom: 0.2rem;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-  }
-  .meta-item .meta-val {
-    font-size: 0.88rem;
-    color: var(--navy);
-    font-weight: 500;
-  }
-  .coming-soon {
-    background: var(--white);
-    border: 1.5px dashed var(--border);
-    border-radius: 10px;
-    padding: 2rem;
-    text-align: center;
-    color: var(--text-muted);
-    font-size: 0.92rem;
-    margin-top: 1rem;
-  }
-  .coming-soon span {
-    display: block;
-    font-size: 1.5rem;
-    margin-bottom: 0.5rem;
-    opacity: 0.4;
-  }
-
-  /* SKILLS */
-  .skills-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-    gap: 1rem;
-  }
-  .skill-group {
-    background: var(--white);
-    border: 1px solid var(--border);
-    border-radius: 10px;
-    padding: 1.25rem;
-  }
-  .skill-group h4 {
-    font-size: 0.82rem;
-    font-weight: 700;
-    color: var(--teal);
-    text-transform: uppercase;
-    letter-spacing: 0.8px;
-    margin-bottom: 0.85rem;
-  }
-  .skill-group ul {
-    list-style: none;
-  }
-  .skill-group li {
-    font-size: 0.88rem;
-    color: var(--text-muted);
-    padding: 0.2rem 0;
-    display: flex;
-    align-items: center;
+  .photo-placeholder {
+    width: 100%; height: 100%;
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+    color: rgba(255,255,255,0.7); font-size: 0.75rem; text-align: center;
     gap: 0.5rem;
   }
+  .photo-placeholder svg { opacity: 0.5; }
+  .photo-placeholder span { font-size: 0.7rem; opacity: 0.6; padding: 0 1rem; }
+  #photoInput { display: none; }
+  .hero-text { color: white; }
+  .hero-eyebrow {
+    font-size: 0.8rem; font-weight: 600; letter-spacing: 2px;
+    color: var(--teal-mid); text-transform: uppercase; margin-bottom: 0.75rem;
+  }
+  .hero-text h1 {
+    font-size: 2.8rem; font-weight: 800; line-height: 1.15;
+    margin-bottom: 0.75rem; letter-spacing: -0.5px;
+  }
+  .hero-text h1 span { color: var(--teal-mid); }
+  .hero-tagline {
+    font-size: 1.05rem; opacity: 0.82; margin-bottom: 1.5rem; max-width: 480px;
+  }
+  .hero-badges {
+    display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 2rem;
+  }
+  .badge {
+    background: rgba(255,255,255,0.12); border: 1px solid rgba(255,255,255,0.2);
+    color: rgba(255,255,255,0.9); font-size: 0.75rem; font-weight: 500;
+    padding: 0.3rem 0.75rem; border-radius: 20px;
+  }
+  .badge.accent { background: var(--accent); border-color: var(--accent); color: white; }
+  .hero-btns { display: flex; gap: 0.75rem; flex-wrap: wrap; }
+  .btn {
+    display: inline-flex; align-items: center; gap: 0.4rem;
+    padding: 0.65rem 1.4rem; border-radius: 8px; font-size: 0.875rem;
+    font-weight: 600; text-decoration: none; transition: all 0.2s; cursor: pointer; border: none;
+  }
+  .btn-primary { background: var(--teal); color: white; }
+  .btn-primary:hover { background: var(--teal-mid); transform: translateY(-1px); }
+  .btn-ghost { background: transparent; color: white; border: 1.5px solid rgba(255,255,255,0.4); }
+  .btn-ghost:hover { background: rgba(255,255,255,0.1); }
+  .hero-scroll {
+    position: absolute; bottom: 2rem; left: 50%; transform: translateX(-50%);
+    color: rgba(255,255,255,0.4); font-size: 0.75rem; text-align: center;
+    animation: bounce 2s infinite;
+  }
+  @keyframes bounce { 0%,100%{transform:translateX(-50%) translateY(0)} 50%{transform:translateX(-50%) translateY(6px)} }
+
+  /* ── STATS BAR ── */
+  .stats-bar {
+    background: var(--navy);
+    display: flex; justify-content: center; gap: 0; flex-wrap: wrap;
+  }
+  .stat {
+    padding: 1.5rem 2.5rem; text-align: center; color: white;
+    border-right: 1px solid rgba(255,255,255,0.08);
+  }
+  .stat:last-child { border-right: none; }
+  .stat-num { font-size: 2rem; font-weight: 800; color: var(--teal-mid); line-height: 1; }
+  .stat-label { font-size: 0.75rem; opacity: 0.6; margin-top: 0.25rem; }
+
+  /* ── SECTIONS ── */
+  .section { max-width: 980px; margin: 0 auto; padding: 5rem 2rem; }
+  .section-label {
+    font-size: 0.75rem; font-weight: 700; color: var(--teal);
+    text-transform: uppercase; letter-spacing: 2px; margin-bottom: 0.5rem;
+  }
+  .section-title {
+    font-size: 1.9rem; font-weight: 800; color: var(--navy);
+    margin-bottom: 0.5rem; letter-spacing: -0.3px;
+  }
+  .section-line {
+    width: 40px; height: 3px; background: var(--teal);
+    border-radius: 2px; margin-bottom: 2.5rem;
+  }
+
+  /* ── ABOUT ── */
+  .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; }
+  .about-card {
+    background: var(--card-bg); border: 1px solid var(--border);
+    border-radius: 12px; padding: 1.75rem;
+  }
+  .about-card.wide { grid-column: 1 / -1; }
+  .about-card h4 {
+    font-size: 0.8rem; font-weight: 700; color: var(--teal);
+    text-transform: uppercase; letter-spacing: 1px; margin-bottom: 0.75rem;
+  }
+  .about-card p { font-size: 0.95rem; color: var(--muted); line-height: 1.8; }
+  .about-card p + p { margin-top: 0.75rem; }
+  .about-card strong { color: var(--navy); }
+  .avail-pill {
+    display: inline-flex; align-items: center; gap: 0.4rem;
+    background: #E8F8EE; border: 1px solid #A8DDB8; color: #1A6B38;
+    font-size: 0.8rem; font-weight: 600; padding: 0.35rem 0.85rem;
+    border-radius: 20px; margin-bottom: 1rem;
+  }
+  .avail-dot { width: 7px; height: 7px; background: #2DB356; border-radius: 50%; animation: pulse 1.5s infinite; }
+  @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.4} }
+
+  /* ── PROJECTS ── */
+  .projects-list { display: flex; flex-direction: column; gap: 1.5rem; }
+  .project-card {
+    background: var(--card-bg); border: 1px solid var(--border);
+    border-radius: 12px; overflow: hidden;
+    transition: box-shadow 0.2s, transform 0.2s;
+  }
+  .project-card:hover { box-shadow: 0 8px 32px rgba(30,58,79,0.1); transform: translateY(-2px); }
+  .project-head {
+    background: linear-gradient(135deg, var(--navy) 0%, #1a4a62 100%);
+    padding: 1.5rem 1.75rem;
+    display: flex; justify-content: space-between; align-items: flex-start; gap: 1rem; flex-wrap: wrap;
+  }
+  .project-head h3 { color: white; font-size: 1.15rem; font-weight: 700; margin-bottom: 0.2rem; }
+  .project-head p { color: rgba(255,255,255,0.65); font-size: 0.82rem; }
+  .proj-badge {
+    background: var(--accent); color: white; font-size: 0.7rem;
+    font-weight: 700; padding: 0.2rem 0.6rem; border-radius: 4px; white-space: nowrap;
+  }
+  .project-body { padding: 1.5rem 1.75rem; }
+  .project-desc { font-size: 0.92rem; color: var(--muted); margin-bottom: 1.25rem; line-height: 1.75; }
+  .tags { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-bottom: 1.25rem; }
+  .tag {
+    background: var(--teal-light); color: var(--navy);
+    font-size: 0.75rem; font-weight: 500; padding: 0.2rem 0.65rem;
+    border-radius: 20px; border: 1px solid var(--border);
+  }
+  .project-meta { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 0.75rem; }
+  .meta-item {
+    background: var(--bg); border: 1px solid var(--border);
+    border-radius: 8px; padding: 0.65rem 0.9rem;
+  }
+  .meta-label { font-size: 0.68rem; color: var(--muted); text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 0.2rem; }
+  .meta-val { font-size: 0.85rem; color: var(--navy); font-weight: 600; }
+  .project-link {
+    display: inline-flex; align-items: center; gap: 0.35rem;
+    font-size: 0.8rem; color: var(--teal); text-decoration: none; font-weight: 600;
+    border: 1px solid var(--border); padding: 0.35rem 0.85rem; border-radius: 6px;
+    transition: all 0.2s;
+  }
+  .project-link:hover { background: var(--teal-light); border-color: var(--teal); }
+
+  /* ── SKILLS ── */
+  .skills-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1rem; }
+  .skill-group {
+    background: var(--card-bg); border: 1px solid var(--border);
+    border-radius: 12px; padding: 1.4rem;
+  }
+  .skill-group h4 {
+    font-size: 0.75rem; font-weight: 700; color: var(--teal);
+    text-transform: uppercase; letter-spacing: 1px; margin-bottom: 1rem;
+    padding-bottom: 0.5rem; border-bottom: 1px solid var(--border);
+  }
+  .skill-group ul { list-style: none; }
+  .skill-group li {
+    font-size: 0.875rem; color: var(--muted); padding: 0.25rem 0;
+    display: flex; align-items: center; gap: 0.5rem;
+  }
   .skill-group li::before {
-    content: '';
-    width: 5px;
-    height: 5px;
-    border-radius: 50%;
-    background: var(--teal-mid);
-    flex-shrink: 0;
+    content: ''; width: 5px; height: 5px; border-radius: 50%;
+    background: var(--teal); flex-shrink: 0;
   }
 
-  /* EDUCATION & EXPERIENCE */
+  /* ── EXPERIENCE ── */
   .timeline { display: flex; flex-direction: column; gap: 1rem; }
-  .timeline-item {
-    background: var(--white);
-    border: 1px solid var(--border);
-    border-left: 3px solid var(--teal);
-    border-radius: 0 8px 8px 0;
-    padding: 1.1rem 1.4rem;
+  .tl-item {
+    background: var(--card-bg); border: 1px solid var(--border);
+    border-left: 3px solid var(--teal); border-radius: 0 10px 10px 0;
+    padding: 1.25rem 1.5rem;
   }
-  .timeline-item .tl-top {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
-    gap: 1rem;
-    flex-wrap: wrap;
-  }
-  .timeline-item h4 {
-    font-size: 0.95rem;
-    font-weight: 600;
-    color: var(--navy);
-    margin-bottom: 0.15rem;
-  }
-  .timeline-item .org {
-    font-size: 0.85rem;
-    color: var(--teal);
-  }
-  .timeline-item .date {
-    font-size: 0.8rem;
-    color: var(--text-muted);
-    white-space: nowrap;
-  }
-  .timeline-item .note {
-    font-size: 0.83rem;
-    color: var(--text-muted);
-    margin-top: 0.4rem;
-    font-style: italic;
+  .tl-top { display: flex; justify-content: space-between; align-items: flex-start; gap: 1rem; flex-wrap: wrap; margin-bottom: 0.4rem; }
+  .tl-top h4 { font-size: 0.95rem; font-weight: 700; color: var(--navy); }
+  .tl-org { font-size: 0.85rem; color: var(--teal); font-weight: 500; margin-bottom: 0.25rem; }
+  .tl-date { font-size: 0.78rem; color: var(--muted); white-space: nowrap; }
+  .tl-note { font-size: 0.83rem; color: var(--muted); font-style: italic; }
+  .tl-award {
+    display: inline-flex; align-items: center; gap: 0.35rem;
+    background: #FFF8E6; border: 1px solid #F0C040; color: #8B6000;
+    font-size: 0.75rem; font-weight: 600; padding: 0.2rem 0.6rem;
+    border-radius: 4px; margin-top: 0.5rem;
   }
 
-  /* CONTACT */
+  /* ── CERTIFICATIONS ── */
+  .certs-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1rem; }
+  .cert-card {
+    background: var(--card-bg); border: 1px solid var(--border);
+    border-radius: 10px; padding: 1.25rem; display: flex; gap: 1rem; align-items: flex-start;
+  }
+  .cert-icon {
+    width: 40px; height: 40px; border-radius: 8px; background: var(--teal-light);
+    display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-size: 1.2rem;
+  }
+  .cert-info h5 { font-size: 0.88rem; font-weight: 700; color: var(--navy); margin-bottom: 0.2rem; }
+  .cert-info p { font-size: 0.78rem; color: var(--muted); }
+
+  /* ── CONTACT ── */
+  .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; }
   .contact-card {
-    background: var(--white);
-    border: 1px solid var(--border);
-    border-radius: 10px;
-    padding: 1.75rem;
-    display: flex;
-    flex-direction: column;
-    gap: 0.75rem;
+    background: var(--card-bg); border: 1px solid var(--border);
+    border-radius: 12px; padding: 1.75rem;
+    display: flex; flex-direction: column; gap: 1rem;
   }
+  .contact-card.highlight {
+    background: linear-gradient(135deg, var(--navy), #1a4a62);
+    border-color: transparent; color: white;
+  }
+  .contact-card.highlight h4 { color: white; }
+  .contact-card.highlight p { color: rgba(255,255,255,0.7); }
+  .contact-card h4 { font-size: 1rem; font-weight: 700; color: var(--navy); }
   .contact-row {
-    display: flex;
-    align-items: center;
-    gap: 0.75rem;
-    font-size: 0.92rem;
-    color: var(--text-muted);
+    display: flex; align-items: center; gap: 0.75rem;
+    font-size: 0.9rem; color: var(--muted);
   }
-  .contact-row svg {
-    width: 18px;
-    height: 18px;
-    stroke: var(--teal);
-    flex-shrink: 0;
-  }
-  .contact-row a {
-    color: var(--teal);
-    text-decoration: none;
-  }
+  .contact-row svg { width: 18px; height: 18px; stroke: var(--teal); flex-shrink: 0; }
+  .contact-card.highlight .contact-row { color: rgba(255,255,255,0.8); }
+  .contact-card.highlight .contact-row svg { stroke: var(--teal-mid); }
+  .contact-row a { color: var(--teal); text-decoration: none; }
   .contact-row a:hover { text-decoration: underline; }
+  .contact-card.highlight .contact-row a { color: var(--teal-mid); }
 
-  /* FOOTER */
+  /* ── FOOTER ── */
   footer {
-    text-align: center;
-    padding: 2rem;
-    font-size: 0.8rem;
-    color: var(--text-muted);
-    border-top: 1px solid var(--border);
+    text-align: center; padding: 2rem; font-size: 0.78rem;
+    color: var(--muted); border-top: 1px solid var(--border);
   }
 
-  @media (max-width: 600px) {
-    .hero h1 { font-size: 1.6rem; }
+  /* ── RESPONSIVE ── */
+  @media (max-width: 768px) {
+    .hero-inner { flex-direction: column; text-align: center; gap: 2rem; }
+    .hero-badges { justify-content: center; }
+    .hero-btns { justify-content: center; }
+    .hero-photo-wrap { width: 150px; height: 150px; }
+    .hero-text h1 { font-size: 2rem; }
+    .about-grid { grid-template-columns: 1fr; }
+    .contact-grid { grid-template-columns: 1fr; }
+    .stat { padding: 1rem 1.5rem; }
     nav ul { gap: 1rem; }
+    .nav-cta { display: none; }
   }
 </style>
 </head>
 <body>
 
+<!-- NAV -->
 <nav>
-  <div class="logo">Mashuk E Lahi</div>
+  <div class="nav-logo">Mashuk<span>.</span>dev</div>
   <ul>
     <li><a href="#about">About</a></li>
     <li><a href="#projects">Projects</a></li>
     <li><a href="#skills">Skills</a></li>
-    <li><a href="#contact">Contact</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#contact" class="nav-cta">Contact</a></li>
   </ul>
 </nav>
 
+<!-- HERO -->
 <div class="hero">
-  <div class="hero-avatar">MB</div>
-  <h1>Md Mashuk E Lahi</h1>
-  <p class="tagline">Electronics &amp; Software Engineer &nbsp;·&nbsp; MSE Student, Yoobee Colleges</p>
-  <p class="location">📍 Auckland, New Zealand</p>
-  <div class="hero-links">
-    <a href="https://github.com/Mashuk25" class="btn btn-white" target="_blank">GitHub</a>
-    <a href="mailto:elahimashukh@gmail.com" class="btn btn-outline">Email me</a>
+  <div class="hero-inner">
+    <div class="hero-photo-wrap" onclick="document.getElementById('photoInput').click()" title="Click to upload your photo">
+      <img id="heroPhoto" src="" alt="Mashuk E Lahi" style="display:none;">
+      <div class="photo-placeholder" id="photoPlaceholder">
+        <svg width="40" height="40" fill="none" viewBox="0 0 24 24" stroke="white" stroke-width="1.5">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z"/>
+        </svg>
+        <span>Click to add your photo</span>
+      </div>
+      <input type="file" id="photoInput" accept="image/*">
+    </div>
+
+    <div class="hero-text">
+      <div class="hero-eyebrow">IoT & Embedded Systems Engineer</div>
+      <h1>Md Mashuk<br><span>E Lahi</span></h1>
+      <p class="hero-tagline">7 years building IoT systems that work in the real world. Now completing MSE in Auckland — adding data analytics, cloud security & QA to a hardware-first foundation.</p>
+      <div class="hero-badges">
+        <span class="badge accent">🏆 Best IoT Engineer 2023</span>
+        <span class="badge">MSE Graduate Nov 2026</span>
+        <span class="badge">Available from Jul 28</span>
+        <span class="badge">Open to Relocate NZ</span>
+      </div>
+      <div class="hero-btns">
+        <a href="#projects" class="btn btn-primary">View Projects</a>
+        <a href="https://github.com/Mashuk25" target="_blank" class="btn btn-ghost">GitHub</a>
+        <a href="#contact" class="btn btn-ghost">Contact Me</a>
+      </div>
+    </div>
+  </div>
+  <div class="hero-scroll">↓ scroll</div>
+</div>
+
+<!-- STATS -->
+<div class="stats-bar">
+  <div class="stat"><div class="stat-num">7</div><div class="stat-label">Years Field Experience</div></div>
+  <div class="stat"><div class="stat-num">5+</div><div class="stat-label">Production IoT Systems</div></div>
+  <div class="stat"><div class="stat-num">A</div><div class="stat-label">MSE Grade Average</div></div>
+  <div class="stat"><div class="stat-num">100+</div><div class="stat-label">Smart Devices Deployed</div></div>
+  <div class="stat"><div class="stat-num">25hrs</div><div class="stat-label">Available Per Week</div></div>
+</div>
+
+<!-- ABOUT -->
+<div class="section" id="about">
+  <div class="section-label">Who I Am</div>
+  <div class="section-title">About Me</div>
+  <div class="section-line"></div>
+  <div class="about-grid">
+    <div class="about-card wide">
+      <div class="avail-pill"><span class="avail-dot"></span> Available from July 28, 2026 · Up to 25hrs/week now</div>
+      <p>I'm an IoT and embedded systems engineer with <strong>7 years of hands-on field experience</strong> deploying sensor networks, designing PCBs, troubleshooting hardware-software faults, and validating data reliability across real production environments — from World Bank-funded air quality networks to government transport infrastructure in Bangladesh.</p>
+      <p style="margin-top:0.75rem">In late 2025 I moved to Auckland and began a <strong>Master of Software Engineering at Yoobee Colleges</strong> (A average, graduating November 2026). I'm deliberately targeting graduate and internship roles in NZ — not because my skills are entry level, but because NZ employers need local proof before extending senior trust. I'm here to earn that.</p>
+    </div>
+    <div class="about-card">
+      <h4>Currently Learning</h4>
+      <p>☁️ Cloud Security Architecture<br>📊 Data Analytics with Power BI<br>🔗 Blockchain & Decentralised Identity<br>🧪 QA & Software Testing Principles<br>🚌 Intelligent Transportation Systems</p>
+    </div>
+    <div class="about-card">
+      <h4>Open To</h4>
+      <p>IoT Engineer · Embedded Systems Engineer<br>IT Support · Technical Support Analyst<br>Junior QA / Test Analyst<br>Junior Data Analyst / BI Analyst<br>Graduate Engineering Programmes</p>
+    </div>
   </div>
 </div>
 
-<section id="about">
-  <h2>About</h2>
-  <div class="about-card">
-    Engineer with <strong>7 years of hands-on experience</strong> across hardware, embedded systems, and IoT deployments in Bangladesh. Now based in Auckland completing a <strong>Master of Software Engineering</strong> at Yoobee Colleges, actively building full-stack software skills alongside my electronics background.
-    <br><br>
-    Comfortable working across the stack — from PCB design and sensor calibration to REST APIs and cloud deployment. I adapt quickly to new tools, teams, and environments.
-  </div>
-</section>
+<!-- PROJECTS -->
+<div style="background: linear-gradient(180deg, var(--bg) 0%, #EBF5F8 100%);">
+<div class="section" id="projects">
+  <div class="section-label">What I've Built</div>
+  <div class="section-title">Projects</div>
+  <div class="section-line"></div>
+  <div class="projects-list">
 
-<section id="projects">
-  <h2>Projects</h2>
-  <div class="project-card">
-    <div class="project-header">
-      <div>
-        <h3>SureSource</h3>
-        <p>Farm-to-Business B2B Marketplace &nbsp;·&nbsp; MSE800 coursework, sole developer</p>
+    <!-- SureSource -->
+    <div class="project-card">
+      <div class="project-head">
+        <div>
+          <h3>SureSource — B2B Farm-to-Business Marketplace</h3>
+          <p>MSE800 Coursework · Sole Developer · Live & Deployed</p>
+        </div>
+        <span class="proj-badge">FULL-STACK</span>
       </div>
-      <a href="https://github.com/Mashuk25/SureSource_v1.00" target="_blank" class="btn btn-outline" style="font-size:0.8rem; padding:0.4rem 0.9rem;">View on GitHub</a>
-    </div>
-    <div class="project-body">
-      <p class="project-desc">
-        A full-stack B2B marketplace connecting NZ farmers directly with restaurants, hotels, and retailers.
-        Includes multi-role authentication (buyers, farmers, admins), full order lifecycle management,
-        automated delivery cost calculation (Haversine formula), and a bilingual UI in English and Te Reo Māori
-        aligned with Te Tiriti o Waitangi principles. Deployed live on Render (backend) and Vercel (frontend).
-      </p>
-      <div class="tech-stack">
-        <span class="tag">Django REST Framework</span>
-        <span class="tag">React</span>
-        <span class="tag">PostgreSQL</span>
-        <span class="tag">Docker</span>
-        <span class="tag">JWT Auth</span>
-        <span class="tag">Cloudinary</span>
-        <span class="tag">Render</span>
-        <span class="tag">Vercel</span>
-        <span class="tag">Chart.js</span>
-      </div>
-      <div class="project-meta">
-        <div class="meta-item">
-          <div class="meta-label">Type</div>
-          <div class="meta-val">Full-stack web app</div>
+      <div class="project-body">
+        <p class="project-desc">Solo-built a full-stack B2B marketplace connecting NZ farmers directly with restaurants, hotels, and retailers. Multi-role authentication, full order lifecycle, automated delivery cost calculation (Haversine formula), bilingual UI in English and Te Reo Māori aligned with Te Tiriti o Waitangi principles, and an admin analytics dashboard. Deployed live on Render and Vercel.</p>
+        <div class="tags">
+          <span class="tag">Django REST Framework</span><span class="tag">React</span><span class="tag">PostgreSQL</span>
+          <span class="tag">Docker</span><span class="tag">JWT Auth</span><span class="tag">Cloudinary</span>
+          <span class="tag">Render</span><span class="tag">Vercel</span><span class="tag">Chart.js</span>
         </div>
-        <div class="meta-item">
-          <div class="meta-label">Status</div>
-          <div class="meta-val">Live &amp; deployed</div>
+        <div class="project-meta">
+          <div class="meta-item"><div class="meta-label">Type</div><div class="meta-val">Full-stack web app</div></div>
+          <div class="meta-item"><div class="meta-label">Status</div><div class="meta-val">Live & deployed</div></div>
+          <div class="meta-item"><div class="meta-label">Role</div><div class="meta-val">Sole developer</div></div>
+          <div class="meta-item"><div class="meta-label">Year</div><div class="meta-val">2026</div></div>
         </div>
-        <div class="meta-item">
-          <div class="meta-label">Role</div>
-          <div class="meta-val">Sole developer</div>
-        </div>
+        <br>
+        <a href="https://github.com/Mashuk25/SureSource_v1.00" target="_blank" class="project-link">
+          <svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+          View on GitHub
+        </a>
       </div>
     </div>
-  </div>
 
-  <div class="coming-soon">
-    <span>🚧</span>
-    More projects coming soon — IoT, data analysis, and embedded systems work.
-  </div>
-</section>
+    <!-- Energy Monitoring -->
+    <div class="project-card">
+      <div class="project-head">
+        <div>
+          <h3>Smart Energy Monitoring System — 100 Smart Sockets</h3>
+          <p>DataSoft Systems · Commercial Deployment · 2023</p>
+        </div>
+        <span class="proj-badge">🏆 AWARD PROJECT</span>
+      </div>
+      <div class="project-body">
+        <p class="project-desc">Production IoT energy monitoring solution — 100 Wi-Fi smart sockets monitoring real-time voltage, current, and energy consumption across commercial sites. Sourced hardware internationally, customised to client specifications, tested and validated all 100 units, and delivered a fully customised web application with per-device analytics (day/week/month), CSV data export, and remote monitoring. Recognised with the Best IoT Engineer Award at DataSoft Systems.</p>
+        <div class="tags">
+          <span class="tag">ESP32</span><span class="tag">Wi-Fi 802.11 b/g/n</span><span class="tag">WPA2</span>
+          <span class="tag">Energy Metering</span><span class="tag">Cloud API</span><span class="tag">Web Dashboard</span><span class="tag">CSV Export</span>
+        </div>
+        <div class="project-meta">
+          <div class="meta-item"><div class="meta-label">Scale</div><div class="meta-val">100 devices</div></div>
+          <div class="meta-item"><div class="meta-label">Type</div><div class="meta-val">IoT + Web App</div></div>
+          <div class="meta-item"><div class="meta-label">Role</div><div class="meta-val">Project lead</div></div>
+          <div class="meta-item"><div class="meta-label">Year</div><div class="meta-val">2023</div></div>
+        </div>
+      </div>
+    </div>
 
-<section id="skills">
-  <h2>Skills</h2>
+    <!-- Cattle Shed -->
+    <div class="project-card">
+      <div class="project-head">
+        <div>
+          <h3>IoT Smart Cattle Shed Monitoring & Control System</h3>
+          <p>DataSoft Systems · Agricultural IoT · 2023</p>
+        </div>
+        <span class="proj-badge">IoT</span>
+      </div>
+      <div class="project-body">
+        <p class="project-desc">End-to-end IoT system monitoring and automating cattle shed environments — temperature, humidity, light density, and ammonia levels measured in real-time with automated control of exhaust fans, mist watering, and lighting. Delivered Android mobile app and web dashboard with live alerts and analytics for data-driven livestock management. Led field inspection, device selection, hardware procurement, installation, and system commissioning.</p>
+        <div class="tags">
+          <span class="tag">ESP32</span><span class="tag">Temperature/Humidity Sensors</span><span class="tag">Ammonia Sensors</span>
+          <span class="tag">MQTT</span><span class="tag">Wi-Fi</span><span class="tag">Android App</span><span class="tag">Web Dashboard</span>
+        </div>
+        <div class="project-meta">
+          <div class="meta-item"><div class="meta-label">Sector</div><div class="meta-val">Agriculture IoT</div></div>
+          <div class="meta-item"><div class="meta-label">Role</div><div class="meta-val">Project manager</div></div>
+          <div class="meta-item"><div class="meta-label">Timeline</div><div class="meta-val">3–4 months</div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Air Quality -->
+    <div class="project-card">
+      <div class="project-head">
+        <div>
+          <h3>Air Quality Monitoring Network — World Bank Funded</h3>
+          <p>DataSoft Systems · Government / International · 2022</p>
+        </div>
+        <span class="proj-badge">FIELD IoT</span>
+      </div>
+      <div class="project-body">
+        <p class="project-desc">Designed and deployed a citywide air quality monitoring solution for a World Bank-funded environmental project. Built custom PCBs from scratch, assembled and calibrated AQI sensors, fabricated weatherproof enclosures, and configured real-time cloud dashboards. Debugged LoRa and GSM connectivity failures in live urban field conditions and validated data reliability across 40+ nodes.</p>
+        <div class="tags">
+          <span class="tag">ESP32</span><span class="tag">PCB Design (Eagle)</span><span class="tag">LoRa</span>
+          <span class="tag">GSM</span><span class="tag">MQTT</span><span class="tag">AQI Sensors</span><span class="tag">Cloud Dashboard</span>
+        </div>
+        <div class="project-meta">
+          <div class="meta-item"><div class="meta-label">Client</div><div class="meta-val">World Bank</div></div>
+          <div class="meta-item"><div class="meta-label">Scale</div><div class="meta-val">40+ nodes</div></div>
+          <div class="meta-item"><div class="meta-label">Role</div><div class="meta-val">Hardware lead</div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Bus Validator -->
+    <div class="project-card">
+      <div class="project-head">
+        <div>
+          <h3>Bus Validator Field Deployment — Dhaka Transport Authority</h3>
+          <p>DataSoft Systems · Government Infrastructure · 2020–2024</p>
+        </div>
+        <span class="proj-badge">SYSTEMS</span>
+      </div>
+      <div class="project-body">
+        <p class="project-desc">Led field installation and troubleshooting for a government bus validator rollout across Dhaka's public transport network. Diagnosed GPS, power, software, and data-sync faults in live operational conditions using multimeters and signal analysis tools. Wrote all technical installation manuals and QA documentation; delivered staff training for non-technical transport authority personnel.</p>
+        <div class="tags">
+          <span class="tag">GPS</span><span class="tag">GSM</span><span class="tag">Embedded Systems</span>
+          <span class="tag">Signal Testing</span><span class="tag">QA Documentation</span><span class="tag">Technical Writing</span>
+        </div>
+        <div class="project-meta">
+          <div class="meta-item"><div class="meta-label">Client</div><div class="meta-val">Govt. Transport Authority</div></div>
+          <div class="meta-item"><div class="meta-label">Role</div><div class="meta-val">Field lead</div></div>
+          <div class="meta-item"><div class="meta-label">Duration</div><div class="meta-val">4 years</div></div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+</div>
+
+<!-- SKILLS -->
+<div class="section" id="skills">
+  <div class="section-label">What I Know</div>
+  <div class="section-title">Skills</div>
+  <div class="section-line"></div>
   <div class="skills-grid">
     <div class="skill-group">
-      <h4>Hardware &amp; Electronics</h4>
+      <h4>Hardware & Electronics</h4>
       <ul>
-        <li>PCB design (Eagle, KiCad)</li>
+        <li>PCB Design (Eagle, KiCad)</li>
         <li>Microcontrollers (ESP32, Arduino)</li>
-        <li>Sensor calibration &amp; validation</li>
-        <li>DC/AC circuit troubleshooting</li>
-        <li>Soldering &amp; circuit assembly</li>
-        <li>Multimeter &amp; signal testing</li>
+        <li>Sensor Calibration & Validation</li>
+        <li>Firmware Testing & Debugging</li>
+        <li>DC/AC Circuit Troubleshooting</li>
+        <li>Multimeter & Signal Testing</li>
+        <li>Soldering & Circuit Assembly</li>
       </ul>
     </div>
     <div class="skill-group">
-      <h4>Software &amp; Web</h4>
-      <ul>
-        <li>Python · Embedded C/C++</li>
-        <li>Django REST Framework</li>
-        <li>React · PostgreSQL</li>
-        <li>Docker · Git &amp; GitHub</li>
-        <li>Cloud deployment (Render, Vercel)</li>
-        <li>JWT Authentication</li>
-      </ul>
-    </div>
-    <div class="skill-group">
-      <h4>IoT &amp; Connectivity</h4>
+      <h4>IoT & Connectivity</h4>
       <ul>
         <li>MQTT · LoRa · GSM</li>
-        <li>Wi-Fi · BLE</li>
-        <li>Smart home automation</li>
-        <li>Environmental monitoring</li>
-        <li>Data pipeline &amp; dashboards</li>
+        <li>Wi-Fi · BLE · 802.11 b/g/n</li>
+        <li>Embedded C/C++</li>
+        <li>ESP32 Firmware Development</li>
+        <li>Cloud Data Pipelines</li>
+        <li>Environmental Monitoring</li>
+        <li>Smart Home & Agri Automation</li>
       </ul>
     </div>
     <div class="skill-group">
-      <h4>Data &amp; Tools</h4>
+      <h4>Software & Web</h4>
       <ul>
-        <li>Microsoft Power BI</li>
-        <li>Technical documentation</li>
-        <li>Client training &amp; field support</li>
-        <li>Cloud security (studying)</li>
-        <li>Blockchain fundamentals (studying)</li>
+        <li>Python · JavaScript</li>
+        <li>Django REST Framework</li>
+        <li>React · PostgreSQL · MySQL</li>
+        <li>Docker · Git & GitHub</li>
+        <li>Cloud Deployment (Render, Vercel)</li>
+        <li>REST API Design</li>
+        <li>SDLC · Agile Principles</li>
+      </ul>
+    </div>
+    <div class="skill-group">
+      <h4>Data, QA & Security</h4>
+      <ul>
+        <li>Microsoft Power BI (studying)</li>
+        <li>Data Cleaning & Dashboards</li>
+        <li>QA Testing & Bug Reporting</li>
+        <li>Cloud Security Architecture (studying)</li>
+        <li>Blockchain Fundamentals (studying)</li>
+        <li>Technical Documentation</li>
+        <li>Client Training & Support</li>
       </ul>
     </div>
   </div>
-</section>
+</div>
 
-<section id="education">
-  <h2>Education</h2>
+<!-- EXPERIENCE & EDUCATION -->
+<div style="background: linear-gradient(180deg, var(--bg) 0%, #EBF5F8 100%);">
+<div class="section" id="experience">
+  <div class="section-label">My Journey</div>
+  <div class="section-title">Experience & Education</div>
+  <div class="section-line"></div>
   <div class="timeline">
-    <div class="timeline-item">
+    <div class="tl-item">
       <div class="tl-top">
         <div>
           <h4>Master of Software Engineering</h4>
-          <div class="org">Yoobee College of Creative Innovation, Auckland</div>
+          <div class="tl-org">Yoobee College of Creative Innovation, Auckland</div>
         </div>
-        <div class="date">2025 – Ongoing</div>
+        <span class="tl-date">Nov 2025 – Nov 2026</span>
       </div>
-      <div class="note">Courses: Professional Software Engineering · Cloud Security · Blockchain & Decentralised Identity · Intelligent Transportation Systems · Data Analytics with Power BI</div>
+      <div class="tl-note">Grade Average: A · Courses: Professional Software Engineering · Cloud Security · Blockchain & Decentralised Identity · Intelligent Transportation Systems · Data Analytics with Power BI</div>
     </div>
-    <div class="timeline-item">
+    <div class="tl-item">
       <div class="tl-top">
         <div>
-          <h4>B.Sc. Electronics &amp; Telecommunications Engineering</h4>
-          <div class="org">East West University, Bangladesh &nbsp;·&nbsp; GPA 3.18 / 4.0</div>
+          <h4>Senior IoT & Embedded Systems Engineer</h4>
+          <div class="tl-org">DataSoft Systems Bangladesh Ltd.</div>
         </div>
-        <div class="date">2012 – 2016</div>
+        <span class="tl-date">Nov 2018 – Oct 2025</span>
+      </div>
+      <div class="tl-note">Led field deployment of government bus validator networks, World Bank air quality monitoring systems, smart utility sensors for Dept. of Telecommunications, and commercial IoT automation systems.</div>
+      <div class="tl-award">🏆 Best IoT Engineer Award — Oct 2023</div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-top">
+        <div>
+          <h4>Marketing Executive</h4>
+          <div class="tl-org">Aamra Networks Limited, Bangladesh</div>
+        </div>
+        <span class="tl-date">Nov 2017 – Oct 2018</span>
+      </div>
+      <div class="tl-note">IT services marketing campaigns, market research and competitor analysis for major telecom provider.</div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-top">
+        <div>
+          <h4>B.Sc. Electronics & Telecommunications Engineering</h4>
+          <div class="tl-org">East West University, Bangladesh · GPA 3.18 / 4.0</div>
+        </div>
+        <span class="tl-date">2012 – 2016</span>
       </div>
     </div>
   </div>
-</section>
+</div>
+</div>
 
-<section id="contact">
-  <h2>Contact</h2>
-  <div class="contact-card">
-    <div class="contact-row">
-      <svg fill="none" viewBox="0 0 24 24" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75"/></svg>
-      <a href="mailto:elahimashukh@gmail.com">elahimashukh@gmail.com</a>
+<!-- CERTIFICATIONS -->
+<div class="section">
+  <div class="section-label">Credentials</div>
+  <div class="section-title">Certifications & Awards</div>
+  <div class="section-line"></div>
+  <div class="certs-grid">
+    <div class="cert-card">
+      <div class="cert-icon">🏆</div>
+      <div class="cert-info">
+        <h5>Best IoT Engineer Award</h5>
+        <p>DataSoft Systems Bangladesh · Oct 2023</p>
+      </div>
     </div>
-    <div class="contact-row">
-      <svg fill="none" viewBox="0 0 24 24" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M17.25 6.75L22.5 12l-5.25 5.25m-10.5 0L1.5 12l5.25-5.25m7.5-3l-4.5 16.5"/></svg>
-      <a href="https://github.com/Mashuk25" target="_blank">github.com/Mashuk25</a>
+    <div class="cert-card">
+      <div class="cert-icon">📡</div>
+      <div class="cert-info">
+        <h5>IoT Engineering Training Programme</h5>
+        <p>ICT Division, Bangladesh · Apr 2017</p>
+      </div>
     </div>
-    <div class="contact-row">
-      <svg fill="none" viewBox="0 0 24 24" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M15 10.5a3 3 0 11-6 0 3 3 0 016 0z"/><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z"/></svg>
-      Auckland, New Zealand
+    <div class="cert-card">
+      <div class="cert-icon">⚡</div>
+      <div class="cert-info">
+        <h5>Power & Energy Hackathon</h5>
+        <p>Ministry of Power, Energy & Mineral Resources · Nov 2017</p>
+      </div>
+    </div>
+    <div class="cert-card">
+      <div class="cert-icon">🎓</div>
+      <div class="cert-info">
+        <h5>Master of Software Engineering (in progress)</h5>
+        <p>Yoobee Colleges, Auckland · Graduating Nov 2026</p>
+      </div>
     </div>
   </div>
-</section>
+</div>
+
+<!-- CONTACT -->
+<div style="background: linear-gradient(180deg, var(--bg) 0%, #EBF5F8 100%);">
+<div class="section" id="contact">
+  <div class="section-label">Get In Touch</div>
+  <div class="section-title">Contact</div>
+  <div class="section-line"></div>
+  <div class="contact-grid">
+    <div class="contact-card highlight">
+      <h4>Open to Opportunities</h4>
+      <p style="font-size:0.9rem; color:rgba(255,255,255,0.7); margin-bottom:0.5rem">Available from July 28, 2026 · Up to 25hrs/week now · Full-time from November 2026 · Willing to relocate anywhere in NZ</p>
+      <p style="font-size:0.85rem; color:rgba(255,255,255,0.6)">Targeting: IoT Engineering · Embedded Systems · IT Support · QA Testing · Data Analysis</p>
+    </div>
+    <div class="contact-card">
+      <h4>Reach Me</h4>
+      <div class="contact-row">
+        <svg fill="none" viewBox="0 0 24 24" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75"/></svg>
+        <a href="mailto:elahimashukh@gmail.com">elahimashukh@gmail.com</a>
+      </div>
+      <div class="contact-row">
+        <svg fill="none" viewBox="0 0 24 24" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 002.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 01-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 00-1.091-.852H4.5A2.25 2.25 0 002.25 6.75z"/></svg>
+        <a href="tel:+64225332553">+64 22 533 2553</a>
+      </div>
+      <div class="contact-row">
+        <svg fill="none" viewBox="0 0 24 24" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M17.25 6.75L22.5 12l-5.25 5.25m-10.5 0L1.5 12l5.25-5.25m7.5-3l-4.5 16.5"/></svg>
+        <a href="https://github.com/Mashuk25" target="_blank">github.com/Mashuk25</a>
+      </div>
+      <div class="contact-row">
+        <svg fill="none" viewBox="0 0 24 24" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M20.25 14.15v4.25c0 1.094-.787 2.036-1.872 2.18-2.087.277-4.216.42-6.378.42s-4.291-.143-6.378-.42c-1.085-.144-1.872-1.086-1.872-2.18v-4.25m16.5 0a2.18 2.18 0 00.75-1.661V8.706c0-1.081-.768-2.015-1.837-2.175a48.114 48.114 0 00-3.413-.387m4.5 8.006c-.194.165-.42.295-.673.38A23.978 23.978 0 0112 15.75c-2.648 0-5.195-.429-7.577-1.22a2.016 2.016 0 01-.673-.38m0 0A2.18 2.18 0 013 12.489V8.706c0-1.081.768-2.015 1.837-2.175a48.111 48.111 0 013.413-.387m7.5 0V5.25A2.25 2.25 0 0013.5 3h-3a2.25 2.25 0 00-2.25 2.25v.894m7.5 0a48.667 48.667 0 00-7.5 0M12 12.75h.008v.008H12v-.008z"/></svg>
+        <a href="https://www.linkedin.com/in/mashuk-e-lahi" target="_blank">linkedin.com/in/mashuk-e-lahi</a>
+      </div>
+      <div class="contact-row">
+        <svg fill="none" viewBox="0 0 24 24" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M15 10.5a3 3 0 11-6 0 3 3 0 016 0z"/><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z"/></svg>
+        Auckland, New Zealand
+      </div>
+    </div>
+  </div>
+</div>
+</div>
 
 <footer>
-  &copy; 2026 Md Mashuk E Lahi &nbsp;·&nbsp; Auckland, New Zealand
+  &copy; 2026 Md Mashuk E Lahi &nbsp;·&nbsp; IoT & Embedded Systems Engineer &nbsp;·&nbsp; Auckland, New Zealand
 </footer>
+
+<script>
+  // Photo upload
+  document.getElementById('photoInput').addEventListener('change', function(e) {
+    const file = e.target.files[0];
+    if (!file) return;
+    const reader = new FileReader();
+    reader.onload = function(ev) {
+      const img = document.getElementById('heroPhoto');
+      const placeholder = document.getElementById('photoPlaceholder');
+      img.src = ev.target.result;
+      img.style.display = 'block';
+      placeholder.style.display = 'none';
+    };
+    reader.readAsDataURL(file);
+  });
+
+  // Smooth scroll nav highlight
+  const sections = document.querySelectorAll('.section, [id]');
+  const navLinks = document.querySelectorAll('nav a');
+  window.addEventListener('scroll', () => {
+    let current = '';
+    document.querySelectorAll('[id]').forEach(sec => {
+      if (window.scrollY >= sec.offsetTop - 100) current = sec.id;
+    });
+    navLinks.forEach(a => {
+      a.style.color = a.getAttribute('href') === '#' + current ? 'var(--teal)' : '';
+    });
+  });
+
+  // Animate stats on scroll
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) e.target.style.opacity = '1';
+    });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.project-card, .tl-item, .cert-card').forEach(el => {
+    el.style.opacity = '0';
+    el.style.transition = 'opacity 0.5s ease';
+    observer.observe(el);
+  });
+</script>
 
 </body>
 </html>
