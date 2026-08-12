@@ -3,16 +3,15 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Md Mashuk E Lahi — IoT & Embedded Systems Engineer</title>
+<title>Md Mashuk E Lahi — Engineer · Software, Data & Embedded Systems</title>
+<meta name="description" content="Engineer with 7 years across software, data, QA and embedded systems. Completing a Master of Software Engineering in Auckland, graduating November 2026.">
 <style>
   *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
-
   :root {
     --navy:      #1E3A4F;
     --teal:      #2E8B9A;
     --teal-mid:  #4AABB8;
     --teal-light:#E4F4F7;
-    --teal-glow: #2E8B9A22;
     --accent:    #F0A500;
     --text:      #1A2530;
     --muted:     #556070;
@@ -21,9 +20,7 @@
     --border:    #C5DDE4;
     --card-bg:   #FFFFFF;
   }
-
   html { scroll-behavior: smooth; }
-
   body {
     font-family: 'Segoe UI', system-ui, sans-serif;
     background: var(--bg);
@@ -43,9 +40,10 @@
   }
   .nav-logo { font-weight: 800; font-size: 1rem; color: var(--navy); letter-spacing: 0.3px; }
   .nav-logo span { color: var(--teal); }
-  nav ul { list-style: none; display: flex; gap: 1.8rem; }
+  nav ul { list-style: none; display: flex; gap: 1.8rem; align-items: center; }
   nav a { text-decoration: none; font-size: 0.85rem; color: var(--muted); font-weight: 500; transition: color 0.2s; }
   nav a:hover { color: var(--teal); }
+  nav a.active { color: var(--teal); }
   .nav-cta {
     background: var(--teal); color: white !important; padding: 0.35rem 1rem;
     border-radius: 20px; font-size: 0.8rem !important;
@@ -67,7 +65,7 @@
   }
   .hero-inner {
     display: flex; align-items: center; gap: 4rem;
-    max-width: 960px; width: 100%; position: relative; z-index: 1;
+    max-width: 980px; width: 100%; position: relative; z-index: 1;
   }
   .hero-photo-wrap {
     flex-shrink: 0;
@@ -76,22 +74,14 @@
     border: 4px solid rgba(255,255,255,0.25);
     box-shadow: 0 0 0 8px rgba(46,139,154,0.25), 0 20px 60px rgba(0,0,0,0.3);
     overflow: hidden;
-    background: rgba(255,255,255,0.1);
-    position: relative;
-    cursor: pointer;
+    background: rgba(255,255,255,0.08);
+    display: flex; align-items: center; justify-content: center;
   }
-  .hero-photo-wrap img {
-    width: 100%; height: 100%; object-fit: cover; display: block;
+  .hero-photo-wrap img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .photo-fallback {
+    color: rgba(255,255,255,0.75); font-size: 2.6rem; font-weight: 800;
+    letter-spacing: 1px;
   }
-  .photo-placeholder {
-    width: 100%; height: 100%;
-    display: flex; flex-direction: column; align-items: center; justify-content: center;
-    color: rgba(255,255,255,0.7); font-size: 0.75rem; text-align: center;
-    gap: 0.5rem;
-  }
-  .photo-placeholder svg { opacity: 0.5; }
-  .photo-placeholder span { font-size: 0.7rem; opacity: 0.6; padding: 0 1rem; }
-  #photoInput { display: none; }
   .hero-text { color: white; }
   .hero-eyebrow {
     font-size: 0.8rem; font-weight: 600; letter-spacing: 2px;
@@ -103,11 +93,9 @@
   }
   .hero-text h1 span { color: var(--teal-mid); }
   .hero-tagline {
-    font-size: 1.05rem; opacity: 0.82; margin-bottom: 1.5rem; max-width: 480px;
+    font-size: 1.05rem; opacity: 0.85; margin-bottom: 1.5rem; max-width: 520px;
   }
-  .hero-badges {
-    display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 2rem;
-  }
+  .hero-badges { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 2rem; }
   .badge {
     background: rgba(255,255,255,0.12); border: 1px solid rgba(255,255,255,0.2);
     color: rgba(255,255,255,0.9); font-size: 0.75rem; font-weight: 500;
@@ -132,14 +120,8 @@
   @keyframes bounce { 0%,100%{transform:translateX(-50%) translateY(0)} 50%{transform:translateX(-50%) translateY(6px)} }
 
   /* ── STATS BAR ── */
-  .stats-bar {
-    background: var(--navy);
-    display: flex; justify-content: center; gap: 0; flex-wrap: wrap;
-  }
-  .stat {
-    padding: 1.5rem 2.5rem; text-align: center; color: white;
-    border-right: 1px solid rgba(255,255,255,0.08);
-  }
+  .stats-bar { background: var(--navy); display: flex; justify-content: center; gap: 0; flex-wrap: wrap; }
+  .stat { padding: 1.5rem 2.5rem; text-align: center; color: white; border-right: 1px solid rgba(255,255,255,0.08); }
   .stat:last-child { border-right: none; }
   .stat-num { font-size: 2rem; font-weight: 800; color: var(--teal-mid); line-height: 1; }
   .stat-label { font-size: 0.75rem; opacity: 0.6; margin-top: 0.25rem; }
@@ -150,21 +132,25 @@
     font-size: 0.75rem; font-weight: 700; color: var(--teal);
     text-transform: uppercase; letter-spacing: 2px; margin-bottom: 0.5rem;
   }
-  .section-title {
-    font-size: 1.9rem; font-weight: 800; color: var(--navy);
-    margin-bottom: 0.5rem; letter-spacing: -0.3px;
+  .section-title { font-size: 1.9rem; font-weight: 800; color: var(--navy); margin-bottom: 0.5rem; letter-spacing: -0.3px; }
+  .section-line { width: 40px; height: 3px; background: var(--teal); border-radius: 2px; margin-bottom: 2.5rem; }
+
+  /* ── ROLE FILTER ── */
+  .filter-intro { font-size: 0.9rem; color: var(--muted); margin-bottom: 1rem; }
+  .filter-bar { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 2.5rem; }
+  .filter-btn {
+    background: var(--white); border: 1px solid var(--border); color: var(--muted);
+    font-size: 0.82rem; font-weight: 600; padding: 0.45rem 1rem;
+    border-radius: 20px; cursor: pointer; transition: all 0.18s;
+    font-family: inherit;
   }
-  .section-line {
-    width: 40px; height: 3px; background: var(--teal);
-    border-radius: 2px; margin-bottom: 2.5rem;
-  }
+  .filter-btn:hover { border-color: var(--teal); color: var(--teal); }
+  .filter-btn.active { background: var(--teal); border-color: var(--teal); color: white; }
+  .filter-empty { display: none; font-size: 0.9rem; color: var(--muted); font-style: italic; }
 
   /* ── ABOUT ── */
   .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; }
-  .about-card {
-    background: var(--card-bg); border: 1px solid var(--border);
-    border-radius: 12px; padding: 1.75rem;
-  }
+  .about-card { background: var(--card-bg); border: 1px solid var(--border); border-radius: 12px; padding: 1.75rem; }
   .about-card.wide { grid-column: 1 / -1; }
   .about-card h4 {
     font-size: 0.8rem; font-weight: 700; color: var(--teal);
@@ -173,6 +159,9 @@
   .about-card p { font-size: 0.95rem; color: var(--muted); line-height: 1.8; }
   .about-card p + p { margin-top: 0.75rem; }
   .about-card strong { color: var(--navy); }
+  .about-card ul { list-style: none; }
+  .about-card li { font-size: 0.9rem; color: var(--muted); padding: 0.22rem 0; display: flex; gap: 0.5rem; }
+  .about-card li::before { content: ''; width: 5px; height: 5px; border-radius: 50%; background: var(--teal); flex-shrink: 0; margin-top: 0.65rem; }
   .avail-pill {
     display: inline-flex; align-items: center; gap: 0.4rem;
     background: #E8F8EE; border: 1px solid #A8DDB8; color: #1A6B38;
@@ -186,8 +175,7 @@
   .projects-list { display: flex; flex-direction: column; gap: 1.5rem; }
   .project-card {
     background: var(--card-bg); border: 1px solid var(--border);
-    border-radius: 12px; overflow: hidden;
-    transition: box-shadow 0.2s, transform 0.2s;
+    border-radius: 12px; overflow: hidden; transition: box-shadow 0.2s, transform 0.2s;
   }
   .project-card:hover { box-shadow: 0 8px 32px rgba(30,58,79,0.1); transform: translateY(-2px); }
   .project-head {
@@ -205,63 +193,49 @@
   .project-desc { font-size: 0.92rem; color: var(--muted); margin-bottom: 1.25rem; line-height: 1.75; }
   .tags { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-bottom: 1.25rem; }
   .tag {
-    background: var(--teal-light); color: var(--navy);
-    font-size: 0.75rem; font-weight: 500; padding: 0.2rem 0.65rem;
-    border-radius: 20px; border: 1px solid var(--border);
+    background: var(--teal-light); color: var(--navy); font-size: 0.75rem;
+    font-weight: 500; padding: 0.2rem 0.65rem; border-radius: 20px; border: 1px solid var(--border);
   }
   .project-meta { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 0.75rem; }
-  .meta-item {
-    background: var(--bg); border: 1px solid var(--border);
-    border-radius: 8px; padding: 0.65rem 0.9rem;
-  }
+  .meta-item { background: var(--bg); border: 1px solid var(--border); border-radius: 8px; padding: 0.65rem 0.9rem; }
   .meta-label { font-size: 0.68rem; color: var(--muted); text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 0.2rem; }
   .meta-val { font-size: 0.85rem; color: var(--navy); font-weight: 600; }
+  .project-links { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 1.25rem; }
   .project-link {
     display: inline-flex; align-items: center; gap: 0.35rem;
     font-size: 0.8rem; color: var(--teal); text-decoration: none; font-weight: 600;
-    border: 1px solid var(--border); padding: 0.35rem 0.85rem; border-radius: 6px;
-    transition: all 0.2s;
+    border: 1px solid var(--border); padding: 0.35rem 0.85rem; border-radius: 6px; transition: all 0.2s;
   }
   .project-link:hover { background: var(--teal-light); border-color: var(--teal); }
+  .project-link svg { width: 14px; height: 14px; }
 
   /* ── SKILLS ── */
   .skills-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1rem; }
-  .skill-group {
-    background: var(--card-bg); border: 1px solid var(--border);
-    border-radius: 12px; padding: 1.4rem;
-  }
+  .skill-group { background: var(--card-bg); border: 1px solid var(--border); border-radius: 12px; padding: 1.4rem; }
   .skill-group h4 {
     font-size: 0.75rem; font-weight: 700; color: var(--teal);
     text-transform: uppercase; letter-spacing: 1px; margin-bottom: 1rem;
     padding-bottom: 0.5rem; border-bottom: 1px solid var(--border);
   }
   .skill-group ul { list-style: none; }
-  .skill-group li {
-    font-size: 0.875rem; color: var(--muted); padding: 0.25rem 0;
-    display: flex; align-items: center; gap: 0.5rem;
-  }
-  .skill-group li::before {
-    content: ''; width: 5px; height: 5px; border-radius: 50%;
-    background: var(--teal); flex-shrink: 0;
-  }
+  .skill-group li { font-size: 0.875rem; color: var(--muted); padding: 0.25rem 0; display: flex; align-items: center; gap: 0.5rem; }
+  .skill-group li::before { content: ''; width: 5px; height: 5px; border-radius: 50%; background: var(--teal); flex-shrink: 0; }
 
   /* ── EXPERIENCE ── */
   .timeline { display: flex; flex-direction: column; gap: 1rem; }
   .tl-item {
     background: var(--card-bg); border: 1px solid var(--border);
-    border-left: 3px solid var(--teal); border-radius: 0 10px 10px 0;
-    padding: 1.25rem 1.5rem;
+    border-left: 3px solid var(--teal); border-radius: 0 10px 10px 0; padding: 1.25rem 1.5rem;
   }
   .tl-top { display: flex; justify-content: space-between; align-items: flex-start; gap: 1rem; flex-wrap: wrap; margin-bottom: 0.4rem; }
   .tl-top h4 { font-size: 0.95rem; font-weight: 700; color: var(--navy); }
   .tl-org { font-size: 0.85rem; color: var(--teal); font-weight: 500; margin-bottom: 0.25rem; }
   .tl-date { font-size: 0.78rem; color: var(--muted); white-space: nowrap; }
-  .tl-note { font-size: 0.83rem; color: var(--muted); font-style: italic; }
+  .tl-note { font-size: 0.83rem; color: var(--muted); }
   .tl-award {
     display: inline-flex; align-items: center; gap: 0.35rem;
     background: #FFF8E6; border: 1px solid #F0C040; color: #8B6000;
-    font-size: 0.75rem; font-weight: 600; padding: 0.2rem 0.6rem;
-    border-radius: 4px; margin-top: 0.5rem;
+    font-size: 0.75rem; font-weight: 600; padding: 0.2rem 0.6rem; border-radius: 4px; margin-top: 0.5rem;
   }
 
   /* ── CERTIFICATIONS ── */
@@ -280,33 +254,28 @@
   /* ── CONTACT ── */
   .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; }
   .contact-card {
-    background: var(--card-bg); border: 1px solid var(--border);
-    border-radius: 12px; padding: 1.75rem;
-    display: flex; flex-direction: column; gap: 1rem;
+    background: var(--card-bg); border: 1px solid var(--border); border-radius: 12px;
+    padding: 1.75rem; display: flex; flex-direction: column; gap: 1rem;
   }
-  .contact-card.highlight {
-    background: linear-gradient(135deg, var(--navy), #1a4a62);
-    border-color: transparent; color: white;
-  }
+  .contact-card.highlight { background: linear-gradient(135deg, var(--navy), #1a4a62); border-color: transparent; color: white; }
   .contact-card.highlight h4 { color: white; }
   .contact-card.highlight p { color: rgba(255,255,255,0.7); }
   .contact-card h4 { font-size: 1rem; font-weight: 700; color: var(--navy); }
-  .contact-row {
-    display: flex; align-items: center; gap: 0.75rem;
-    font-size: 0.9rem; color: var(--muted);
-  }
-  .contact-row svg { width: 18px; height: 18px; stroke: var(--teal); flex-shrink: 0; }
+  .contact-row { display: flex; align-items: center; gap: 0.75rem; font-size: 0.9rem; color: var(--muted); }
+  .contact-row svg { width: 18px; height: 18px; stroke: var(--teal); fill: none; flex-shrink: 0; }
   .contact-card.highlight .contact-row { color: rgba(255,255,255,0.8); }
   .contact-card.highlight .contact-row svg { stroke: var(--teal-mid); }
   .contact-row a { color: var(--teal); text-decoration: none; }
   .contact-row a:hover { text-decoration: underline; }
   .contact-card.highlight .contact-row a { color: var(--teal-mid); }
-
-  /* ── FOOTER ── */
-  footer {
-    text-align: center; padding: 2rem; font-size: 0.78rem;
-    color: var(--muted); border-top: 1px solid var(--border);
+  .role-list { list-style: none; }
+  .role-list li {
+    font-size: 0.85rem; color: rgba(255,255,255,0.8);
+    padding: 0.18rem 0; display: flex; gap: 0.5rem;
   }
+  .role-list li::before { content: ''; width: 5px; height: 5px; border-radius: 50%; background: var(--teal-mid); flex-shrink: 0; margin-top: 0.6rem; }
+
+  footer { text-align: center; padding: 2rem; font-size: 0.78rem; color: var(--muted); border-top: 1px solid var(--border); }
 
   /* ── RESPONSIVE ── */
   @media (max-width: 768px) {
@@ -325,7 +294,6 @@
 </head>
 <body>
 
-<!-- NAV -->
 <nav>
   <div class="nav-logo">Mashuk<span>.</span>dev</div>
   <ul>
@@ -341,43 +309,39 @@
 <div class="hero">
   <div class="hero-inner">
     <div class="hero-photo-wrap">
-      <img id="heroPhoto" src="./photo.jpg" alt="Mashuk E Lahi" style="display:block;">
-      <div class="photo-placeholder" id="photoPlaceholder" style="display:none;">
-        <svg width="40" height="40" fill="none" viewBox="0 0 24 24" stroke="white" stroke-width="1.5">
-          <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z"/>
-        </svg>
-        <span>Click to add your photo</span>
-      </div>
-      <input type="file" id="photoInput" accept="image/*">
+      <img id="heroPhoto" src="./photo.jpg" alt="Md Mashuk E Lahi"
+           onerror="this.style.display='none'; document.getElementById('photoFallback').style.display='block';">
+      <div class="photo-fallback" id="photoFallback" style="display:none;">ML</div>
     </div>
-
     <div class="hero-text">
-      <div class="hero-eyebrow">IoT & Embedded Systems Engineer</div>
+      <div class="hero-eyebrow">Software · Data · Embedded Systems</div>
       <h1>Md Mashuk<br><span>E Lahi</span></h1>
-      <p class="hero-tagline">7 years building IoT systems that work in the real world. Now completing MSE in Auckland  adding { data analytics, cloud security & QA to a hardware-first foundation }</p>
+      <p class="hero-tagline">
+        Engineer with 7 years of field experience across software, data, QA and embedded systems.
+        Completing a Master of Software Engineering in Auckland, graduating November 2026.
+      </p>
       <div class="hero-badges">
-        <span class="badge accent">🏆 Best IoT Engineer 2023</span>
-        <span class="badge">MSE Graduate Nov 2026</span>
-        <span class="badge">Available from Jul 28</span>
-        <span class="badge">Open to Relocate NZ</span>
+        <span class="badge accent">Best IoT Engineer 2023</span>
+        <span class="badge">MSE · Graduating Nov 2026</span>
+        <span class="badge">A grade average</span>
+        <span class="badge">Full NZ work rights</span>
       </div>
       <div class="hero-btns">
         <a href="#projects" class="btn btn-primary">View Projects</a>
-        <a href="https://github.com/Mashuk25" target="_blank" class="btn btn-ghost">GitHub</a>
-        <a href="#contact" class="btn btn-ghost">Contact Me</a>
+        <a href="https://github.com/Mashuk25" target="_blank" rel="noopener" class="btn btn-ghost">GitHub</a>
+        <a href="#contact" class="btn btn-ghost">Contact</a>
       </div>
     </div>
   </div>
-  <div class="hero-scroll">↓ scroll</div>
+  <div class="hero-scroll">&#8595; scroll</div>
 </div>
 
 <!-- STATS -->
 <div class="stats-bar">
-  <div class="stat"><div class="stat-num">7</div><div class="stat-label">Years Field Experience</div></div>
-  <div class="stat"><div class="stat-num">5+</div><div class="stat-label">Production IoT Systems</div></div>
+  <div class="stat"><div class="stat-num">7</div><div class="stat-label">Years Engineering Experience</div></div>
+  <div class="stat"><div class="stat-num">450</div><div class="stat-label">Devices Deployed &amp; Validated</div></div>
+  <div class="stat"><div class="stat-num">3.4M</div><div class="stat-label">Data Points / Day Processed</div></div>
   <div class="stat"><div class="stat-num">A</div><div class="stat-label">MSE Grade Average</div></div>
-  <div class="stat"><div class="stat-num">100+</div><div class="stat-label">Smart Devices Deployed</div></div>
-  <div class="stat"><div class="stat-num">25hrs</div><div class="stat-label">Available Per Week</div></div>
 </div>
 
 <!-- ABOUT -->
@@ -387,17 +351,31 @@
   <div class="section-line"></div>
   <div class="about-grid">
     <div class="about-card wide">
-      <div class="avail-pill"><span class="avail-dot"></span> Available from July 28, 2026 · Full-Time || Open to relocate</div>
-      <p>I'm an IoT and embedded systems engineer with <strong>7 years of hands-on field experience</strong> deploying sensor networks, designing PCBs, troubleshooting hardware-software faults, and validating data reliability across real production environments — from World Bank-funded air quality networks to government transport infrastructure in Bangladesh.</p>
-      <p style="margin-top:0.75rem">In late 2025 I moved to Auckland and began a <strong>Master of Software Engineering at Yoobee Colleges</strong> (A average, graduating November 2026). I'm deliberately targeting graduate and internship roles in NZ — not because my skills are entry level, but because NZ employers need local proof before extending senior trust. I'm here to earn that.</p>
+      <div class="avail-pill"><span class="avail-dot"></span> Available November 2026 · Full-time · Open to relocating anywhere in NZ</div>
+      <p>I'm an engineer with <strong>7 years of hands-on experience</strong> spanning software development, data pipelines and reporting, QA and firmware validation, and embedded hardware. Most of that work was delivered for government and World Bank-funded clients in Bangladesh, where I built the full stack of a system rather than one slice of it: the device, the firmware, the cloud pipeline, the dashboard, and the documentation the client actually used.</p>
+      <p>In late 2025 I moved to Auckland and started a <strong>Master of Software Engineering at Yoobee College of Creative Innovation</strong>, graduating November 2026 with an A average. During the degree I solo-built and deployed <strong>SureSource</strong>, a live B2B marketplace, covering architecture, backend, frontend, database and cloud deployment on my own.</p>
+      <p>I'm targeting graduate and internship roles in New Zealand. Not because my experience is entry level, but because employers here reasonably want local proof before extending senior trust. I'm here to earn it.</p>
     </div>
     <div class="about-card">
-      <h4>Currently Learning</h4>
-      <p>☁️ Cloud Security Architecture<br>📊 Data Analytics with Power BI<br>🔗 Blockchain & Decentralised Identity<br>🧪 QA & Software Testing Principles<br>🚌 Intelligent Transportation Systems</p>
+      <h4>Currently Studying</h4>
+      <ul>
+        <li>Cloud Security Architecture</li>
+        <li>Data Analytics with Power BI</li>
+        <li>Blockchain &amp; Decentralised Identity</li>
+        <li>Intelligent Transportation Systems</li>
+        <li>Professional Software Engineering</li>
+      </ul>
     </div>
     <div class="about-card">
       <h4>Open To</h4>
-      <p>IoT Engineer · Embedded Systems Engineer<br>IT Support · Technical Support Analyst<br>Junior QA / Test Analyst<br>Junior Data Analyst / BI Analyst<br>Graduate Engineering Programmes</p>
+      <ul>
+        <li>Software Developer / Engineer</li>
+        <li>Data Analyst / BI Analyst</li>
+        <li>QA / Test Analyst</li>
+        <li>IoT &amp; Embedded Systems Engineer</li>
+        <li>IT Support / Technical Support</li>
+        <li>Graduate &amp; internship programmes</li>
+      </ul>
     </div>
   </div>
 </div>
@@ -408,19 +386,30 @@
   <div class="section-label">What I've Built</div>
   <div class="section-title">Projects</div>
   <div class="section-line"></div>
-  <div class="projects-list">
+
+  <p class="filter-intro">Filter by the kind of work you're hiring for:</p>
+  <div class="filter-bar" id="projectFilter">
+    <button class="filter-btn active" data-filter="all">All work</button>
+    <button class="filter-btn" data-filter="software">Software</button>
+    <button class="filter-btn" data-filter="data">Data &amp; Analytics</button>
+    <button class="filter-btn" data-filter="qa">QA &amp; Testing</button>
+    <button class="filter-btn" data-filter="iot">IoT &amp; Embedded</button>
+    <button class="filter-btn" data-filter="support">IT &amp; Field Support</button>
+  </div>
+
+  <div class="projects-list" id="projectsList">
 
     <!-- SureSource -->
-    <div class="project-card">
+    <div class="project-card" data-roles="software data">
       <div class="project-head">
         <div>
-          <h3>SureSource — B2B Farm-to-Business Marketplace</h3>
-          <p>MSE800 Coursework · Sole Developer · Live & Deployed</p>
+          <h3>SureSource &mdash; B2B Farm-to-Business Marketplace</h3>
+          <p>MSE800 coursework · Sole developer · Live and deployed</p>
         </div>
         <span class="proj-badge">FULL-STACK</span>
       </div>
       <div class="project-body">
-        <p class="project-desc">Solo-built a full-stack B2B marketplace connecting NZ farmers directly with restaurants, hotels, and retailers. Multi-role authentication, full order lifecycle, automated delivery cost calculation (Haversine formula), bilingual UI in English and Te Reo Māori aligned with Te Tiriti o Waitangi principles, and an admin analytics dashboard. Deployed live on Render and Vercel.</p>
+        <p class="project-desc">Solo-built a full-stack B2B marketplace connecting NZ farmers directly with restaurants, hotels and retailers. Multi-role authentication, complete order lifecycle, automated delivery cost calculation using the Haversine formula, bilingual UI in English and Te Reo M&#257;ori aligned with Te Tiriti o Waitangi principles, and an admin analytics dashboard. I handled architecture, backend API, frontend, database design, Docker setup and cloud deployment myself.</p>
         <div class="tags">
           <span class="tag">Django REST Framework</span><span class="tag">React</span><span class="tag">PostgreSQL</span>
           <span class="tag">Docker</span><span class="tag">JWT Auth</span><span class="tag">Cloudinary</span>
@@ -428,36 +417,93 @@
         </div>
         <div class="project-meta">
           <div class="meta-item"><div class="meta-label">Type</div><div class="meta-val">Full-stack web app</div></div>
-          <div class="meta-item"><div class="meta-label">Status</div><div class="meta-val">Live & deployed</div></div>
+          <div class="meta-item"><div class="meta-label">Status</div><div class="meta-val">Live &amp; deployed</div></div>
           <div class="meta-item"><div class="meta-label">Role</div><div class="meta-val">Sole developer</div></div>
           <div class="meta-item"><div class="meta-label">Year</div><div class="meta-val">2026</div></div>
         </div>
-        <br>
-        <a href="https://suresource.vercel.app/" target="_blank" class="project-link">
-          <svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
-          Live Demo
-        </a>
+        <div class="project-links">
+          <a href="https://suresource.vercel.app/" target="_blank" rel="noopener" class="project-link">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+            Live demo
+          </a>
+          <a href="https://github.com/Mashuk25/SureSource_v1.00" target="_blank" rel="noopener" class="project-link">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+            Source code
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Air Quality + Power BI -->
+    <div class="project-card" data-roles="data iot qa support">
+      <div class="project-head">
+        <div>
+          <h3>Air Quality Monitoring Network &amp; Reporting Pipeline</h3>
+          <p>DataSoft Systems · World Bank-funded · Government stakeholders</p>
+        </div>
+        <span class="proj-badge">DATA + FIELD IoT</span>
+      </div>
+      <div class="project-body">
+        <p class="project-desc">Designed and deployed a citywide air quality monitoring network, then built the reporting pipeline on top of it. On the hardware side: custom PCBs built from scratch, AQI sensors assembled and calibrated against reference instruments, weatherproof enclosures fabricated, and LoRa and GSM connectivity failures debugged in live urban conditions across 40+ nodes.</p>
+        <p class="project-desc">On the data side: the network produced over <strong>3.4 million raw readings per day</strong>. I built a Power BI reporting pipeline that cleaned dropout gaps, phantom spikes, calibration drift and duplicate packets, then delivered automated daily summary reports to government stakeholders. Sensor accuracy was cross-validated against WHO exposure guidelines.</p>
+        <div class="tags">
+          <span class="tag">Microsoft Power BI</span><span class="tag">Data Cleaning</span><span class="tag">Anomaly Detection</span>
+          <span class="tag">ESP32</span><span class="tag">PCB Design (Eagle)</span><span class="tag">LoRa</span>
+          <span class="tag">GSM</span><span class="tag">MQTT</span><span class="tag">AQI Sensors</span>
+        </div>
+        <div class="project-meta">
+          <div class="meta-item"><div class="meta-label">Client</div><div class="meta-val">World Bank-funded</div></div>
+          <div class="meta-item"><div class="meta-label">Scale</div><div class="meta-val">40+ nodes</div></div>
+          <div class="meta-item"><div class="meta-label">Volume</div><div class="meta-val">3.4M readings/day</div></div>
+          <div class="meta-item"><div class="meta-label">Role</div><div class="meta-val">Hardware &amp; data lead</div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Water meter QA catch -->
+    <div class="project-card" data-roles="qa data iot">
+      <div class="project-head">
+        <div>
+          <h3>National Water Meter Rollout &mdash; Firmware Defect Caught in Pilot</h3>
+          <p>DataSoft Systems · Department of Telecommunications</p>
+        </div>
+        <span class="proj-badge">QA CATCH</span>
+      </div>
+      <div class="project-body">
+        <p class="project-desc">During pilot testing of a national smart water meter rollout, I tested devices across the <strong>full operating range</strong> rather than only typical use. That surfaced a defect in the pulse-counting logic: above 15 L/min, the firmware under-reported flow by roughly 8%, which would have produced systematic billing errors across every installed unit.</p>
+        <p class="project-desc">The fix was three lines of firmware. Finding it before production deployment prevented a full post-rollout recall. It's the clearest example I have of why boundary testing matters more than happy-path testing.</p>
+        <div class="tags">
+          <span class="tag">Firmware Testing</span><span class="tag">Boundary &amp; Range Testing</span><span class="tag">Accuracy Validation</span>
+          <span class="tag">Defect Documentation</span><span class="tag">Embedded C</span><span class="tag">Reference Instrument Calibration</span>
+        </div>
+        <div class="project-meta">
+          <div class="meta-item"><div class="meta-label">Client</div><div class="meta-val">Dept. of Telecommunications</div></div>
+          <div class="meta-item"><div class="meta-label">Defect</div><div class="meta-val">8% under-reporting</div></div>
+          <div class="meta-item"><div class="meta-label">Outcome</div><div class="meta-val">Recall prevented</div></div>
+          <div class="meta-item"><div class="meta-label">Fix size</div><div class="meta-val">3 lines</div></div>
+        </div>
       </div>
     </div>
 
     <!-- Energy Monitoring -->
-    <div class="project-card">
+    <div class="project-card" data-roles="iot software data qa support">
       <div class="project-head">
         <div>
-          <h3>Smart Energy Monitoring System — 450 Smart Sockets</h3>
-          <p>DataSoft Systems · Commercial Deployment · 2023</p>
+          <h3>Smart Energy Monitoring System &mdash; 450 Smart Sockets</h3>
+          <p>DataSoft Systems · Commercial deployment · 2023</p>
         </div>
-        <span class="proj-badge">🏆 AWARD PROJECT</span>
+        <span class="proj-badge">AWARD PROJECT</span>
       </div>
       <div class="project-body">
-        <p class="project-desc">Production IoT energy monitoring solution — 450 Wi-Fi smart sockets monitoring real-time voltage, current, and energy consumption across commercial sites. Sourced hardware internationally, customised to client specifications, tested and validated all 450 units, and delivered a fully customised web application with per-device analytics (day/week/month), CSV data export, and remote monitoring. Recognised with the Best IoT Engineer Award at DataSoft Systems.</p>
+        <p class="project-desc">Production IoT energy monitoring across commercial sites: 450 Wi-Fi smart sockets tracking real-time voltage, current and energy consumption. I sourced the hardware internationally, customised it to client specification, tested and validated all 450 units individually with firmware version tracking and anomaly logs, and designed the cloud data pipeline from MQTT through to the dashboard.</p>
+        <p class="project-desc">The delivered web application gave facility managers per-device analytics by day, week and month, CSV export, and remote monitoring, which let them identify inefficient units and schedule proactive maintenance. This work received the Best IoT Engineer award at DataSoft Systems.</p>
         <div class="tags">
-          <span class="tag">ESP32</span><span class="tag">Wi-Fi 802.11 b/g/n</span><span class="tag">WPA2</span>
-          <span class="tag">Energy Metering</span><span class="tag">Cloud API</span><span class="tag">Web Dashboard</span><span class="tag">CSV Export</span>
+          <span class="tag">ESP32</span><span class="tag">MQTT</span><span class="tag">Cloud Data Pipeline</span>
+          <span class="tag">Energy Metering</span><span class="tag">Web Dashboard</span><span class="tag">Device Validation</span><span class="tag">CSV Export</span>
         </div>
         <div class="project-meta">
           <div class="meta-item"><div class="meta-label">Scale</div><div class="meta-val">450 devices</div></div>
-          <div class="meta-item"><div class="meta-label">Type</div><div class="meta-val">IoT + Web App</div></div>
+          <div class="meta-item"><div class="meta-label">Type</div><div class="meta-val">IoT + web app</div></div>
           <div class="meta-item"><div class="meta-label">Role</div><div class="meta-val">Project lead</div></div>
           <div class="meta-item"><div class="meta-label">Year</div><div class="meta-val">2023</div></div>
         </div>
@@ -465,75 +511,53 @@
     </div>
 
     <!-- Cattle Shed -->
-    <div class="project-card">
+    <div class="project-card" data-roles="iot software support">
       <div class="project-head">
         <div>
-          <h3>IoT Smart Cattle Shed Monitoring & Control System</h3>
+          <h3>Smart Cattle Shed Monitoring &amp; Control System</h3>
           <p>DataSoft Systems · Agricultural IoT · 2023</p>
         </div>
         <span class="proj-badge">IoT</span>
       </div>
       <div class="project-body">
-        <p class="project-desc">End-to-end IoT system monitoring and automating cattle shed environments — temperature, humidity, light density, and ammonia levels measured in real-time with automated control of exhaust fans, mist watering, and lighting. Delivered Android mobile app and web dashboard with live alerts and analytics for data-driven livestock management. Led field inspection, device selection, hardware procurement, installation, and system commissioning.</p>
+        <p class="project-desc">End-to-end system monitoring and automating cattle shed environments: temperature, humidity, light density and ammonia levels measured in real time, with automated control of exhaust fans, mist watering and lighting. Delivered an Android app and web dashboard with live alerts and analytics. I ran field inspection, device selection, hardware procurement, installation, commissioning and client handover.</p>
         <div class="tags">
           <span class="tag">ESP32</span><span class="tag">Temperature/Humidity Sensors</span><span class="tag">Ammonia Sensors</span>
-          <span class="tag">MQTT</span><span class="tag">Wi-Fi</span><span class="tag">Android App</span><span class="tag">Web Dashboard</span>
+          <span class="tag">MQTT</span><span class="tag">Android App</span><span class="tag">Web Dashboard</span><span class="tag">Automated Control</span>
         </div>
         <div class="project-meta">
           <div class="meta-item"><div class="meta-label">Sector</div><div class="meta-val">Agriculture IoT</div></div>
           <div class="meta-item"><div class="meta-label">Role</div><div class="meta-val">Project manager</div></div>
-          <div class="meta-item"><div class="meta-label">Timeline</div><div class="meta-val">3–4 months</div></div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Air Quality -->
-    <div class="project-card">
-      <div class="project-head">
-        <div>
-          <h3>Air Quality Monitoring Network — World Bank Funded</h3>
-          <p>DataSoft Systems · Government / International · 2022</p>
-        </div>
-        <span class="proj-badge">FIELD IoT</span>
-      </div>
-      <div class="project-body">
-        <p class="project-desc">Designed and deployed a citywide air quality monitoring solution for a World Bank-funded environmental project. Built custom PCBs from scratch, assembled and calibrated AQI sensors, fabricated weatherproof enclosures, and configured real-time cloud dashboards. Debugged LoRa and GSM connectivity failures in live urban field conditions and validated data reliability across 40+ nodes.</p>
-        <div class="tags">
-          <span class="tag">ESP32</span><span class="tag">PCB Design (Eagle)</span><span class="tag">LoRa</span>
-          <span class="tag">GSM</span><span class="tag">MQTT</span><span class="tag">AQI Sensors</span><span class="tag">Cloud Dashboard</span>
-        </div>
-        <div class="project-meta">
-          <div class="meta-item"><div class="meta-label">Client</div><div class="meta-val">World Bank</div></div>
-          <div class="meta-item"><div class="meta-label">Scale</div><div class="meta-val">40+ nodes</div></div>
-          <div class="meta-item"><div class="meta-label">Role</div><div class="meta-val">Hardware lead</div></div>
+          <div class="meta-item"><div class="meta-label">Timeline</div><div class="meta-val">3&ndash;4 months</div></div>
         </div>
       </div>
     </div>
 
     <!-- Bus Validator -->
-    <div class="project-card">
+    <div class="project-card" data-roles="support qa iot">
       <div class="project-head">
         <div>
-          <h3>Bus Validator Field Deployment — Dhaka Transport Authority</h3>
-          <p>DataSoft Systems · Government Infrastructure · 2020–2024</p>
+          <h3>Bus Validator Field Deployment &mdash; Dhaka Transport Authority</h3>
+          <p>DataSoft Systems · Government infrastructure</p>
         </div>
-        <span class="proj-badge">SYSTEMS</span>
+        <span class="proj-badge">FIELD SUPPORT</span>
       </div>
       <div class="project-body">
-        <p class="project-desc">Led field installation and troubleshooting for a government bus validator rollout across Dhaka's public transport network. Diagnosed GPS, power, software, and data-sync faults in live operational conditions using multimeters and signal analysis tools. Wrote all technical installation manuals and QA documentation; delivered staff training for non-technical transport authority personnel.</p>
+        <p class="project-desc">Led field installation and troubleshooting for a government bus validator rollout across Dhaka's public transport network. Diagnosed GPS, power, software and data-sync faults in live operational conditions using multimeters and signal analysis tools, restoring service under time pressure. I wrote every technical installation manual and the QA documentation, and delivered training to non-technical transport authority staff.</p>
         <div class="tags">
-          <span class="tag">GPS</span><span class="tag">GSM</span><span class="tag">Embedded Systems</span>
-          <span class="tag">Signal Testing</span><span class="tag">QA Documentation</span><span class="tag">Technical Writing</span>
+          <span class="tag">Fault Diagnosis</span><span class="tag">GPS</span><span class="tag">GSM</span>
+          <span class="tag">Signal Testing</span><span class="tag">QA Documentation</span><span class="tag">Technical Writing</span><span class="tag">End-User Training</span>
         </div>
         <div class="project-meta">
           <div class="meta-item"><div class="meta-label">Client</div><div class="meta-val">Govt. Transport Authority</div></div>
           <div class="meta-item"><div class="meta-label">Role</div><div class="meta-val">Field lead</div></div>
-          <div class="meta-item"><div class="meta-label">Duration</div><div class="meta-val">4 years</div></div>
+          <div class="meta-item"><div class="meta-label">Context</div><div class="meta-val">Live public transport</div></div>
         </div>
       </div>
     </div>
 
   </div>
+  <p class="filter-empty" id="projectsEmpty">No projects match that filter.</p>
 </div>
 </div>
 
@@ -542,105 +566,167 @@
   <div class="section-label">What I Know</div>
   <div class="section-title">Skills</div>
   <div class="section-line"></div>
-  <div class="skills-grid">
-    <div class="skill-group">
-      <h4>Hardware & Electronics</h4>
+
+  <p class="filter-intro">Same filter applies here:</p>
+  <div class="filter-bar" id="skillFilter">
+    <button class="filter-btn active" data-filter="all">All skills</button>
+    <button class="filter-btn" data-filter="software">Software</button>
+    <button class="filter-btn" data-filter="data">Data &amp; Analytics</button>
+    <button class="filter-btn" data-filter="qa">QA &amp; Testing</button>
+    <button class="filter-btn" data-filter="iot">IoT &amp; Embedded</button>
+    <button class="filter-btn" data-filter="support">IT &amp; Field Support</button>
+  </div>
+
+  <div class="skills-grid" id="skillsGrid">
+    <div class="skill-group" data-roles="software">
+      <h4>Software &amp; Web</h4>
       <ul>
-        <li>PCB Design (Eagle, KiCad)</li>
-        <li>Microcontrollers (ESP32, Arduino)</li>
-        <li>Sensor Calibration & Validation</li>
-        <li>Firmware Testing & Debugging</li>
-        <li>DC/AC Circuit Troubleshooting</li>
-        <li>Multimeter & Signal Testing</li>
-        <li>Soldering & Circuit Assembly</li>
-      </ul>
-    </div>
-    <div class="skill-group">
-      <h4>IoT & Connectivity</h4>
-      <ul>
-        <li>MQTT · LoRa · GSM</li>
-        <li>Wi-Fi · BLE · 802.11 b/g/n</li>
-        <li>Embedded C/C++</li>
-        <li>ESP32 Firmware Development</li>
-        <li>Cloud Data Pipelines</li>
-        <li>Environmental Monitoring</li>
-        <li>Smart Home & Agri Automation</li>
-      </ul>
-    </div>
-    <div class="skill-group">
-      <h4>Software & Web</h4>
-      <ul>
-        <li>Python · JavaScript</li>
+        <li>Python &middot; JavaScript</li>
         <li>Django REST Framework</li>
-        <li>React · PostgreSQL · MySQL</li>
-        <li>Docker · Git & GitHub</li>
-        <li>Cloud Deployment (Render, Vercel)</li>
-        <li>REST API Design</li>
-        <li>SDLC · Agile Principles</li>
+        <li>React &middot; PostgreSQL &middot; MySQL</li>
+        <li>Docker &middot; Git &amp; GitHub</li>
+        <li>Cloud deployment (Render, Vercel)</li>
+        <li>REST API design &middot; JWT auth</li>
+        <li>OOP &middot; SDLC &middot; Agile principles</li>
       </ul>
     </div>
-    <div class="skill-group">
-      <h4>Data, QA & Security</h4>
+    <div class="skill-group" data-roles="data">
+      <h4>Data &amp; Analytics</h4>
       <ul>
-        <li>Microsoft Power BI (studying)</li>
-        <li>Data Cleaning & Dashboards</li>
-        <li>QA Testing & Bug Reporting</li>
-        <li>Cloud Security Architecture (studying)</li>
-        <li>Blockchain Fundamentals (studying)</li>
-        <li>Technical Documentation</li>
-        <li>Client Training & Support</li>
+        <li>Microsoft Power BI (production pipelines)</li>
+        <li>Data cleaning &amp; deduplication</li>
+        <li>Dropout gap &amp; calibration drift correction</li>
+        <li>Anomaly detection &amp; threshold alerting</li>
+        <li>Automated stakeholder reporting</li>
+        <li>PostgreSQL &middot; telemetry pipelines</li>
+        <li>Dashboard design for non-technical users</li>
+      </ul>
+    </div>
+    <div class="skill-group" data-roles="qa">
+      <h4>QA &amp; Testing</h4>
+      <ul>
+        <li>Firmware testing &amp; accuracy validation</li>
+        <li>Full operating-range test design</li>
+        <li>Sensor calibration &amp; validation</li>
+        <li>Bug reporting &amp; defect documentation</li>
+        <li>OTA update &amp; rollback testing</li>
+        <li>Device-by-device validation logging</li>
+        <li>Data validation end to end</li>
+      </ul>
+    </div>
+    <div class="skill-group" data-roles="iot">
+      <h4>IoT &amp; Connectivity</h4>
+      <ul>
+        <li>MQTT &middot; LoRa &middot; GSM</li>
+        <li>Wi-Fi &middot; BLE &middot; 802.11 b/g/n</li>
+        <li>Embedded C/C++</li>
+        <li>ESP32 firmware development</li>
+        <li>Cloud data pipelines</li>
+        <li>Environmental monitoring systems</li>
+        <li>Smart home &amp; agri automation</li>
+      </ul>
+    </div>
+    <div class="skill-group" data-roles="iot qa">
+      <h4>Hardware &amp; Electronics</h4>
+      <ul>
+        <li>PCB design (Eagle, KiCad)</li>
+        <li>Microcontrollers (ESP32, Arduino)</li>
+        <li>Sensor calibration &amp; validation</li>
+        <li>DC/AC circuit troubleshooting</li>
+        <li>Board-level fault diagnosis</li>
+        <li>Multimeter &amp; signal testing</li>
+        <li>Soldering &amp; circuit assembly</li>
+      </ul>
+    </div>
+    <div class="skill-group" data-roles="support">
+      <h4>Support &amp; Communication</h4>
+      <ul>
+        <li>Systematic fault diagnosis</li>
+        <li>Connectivity debugging</li>
+        <li>Client training &amp; field support</li>
+        <li>Technical documentation &amp; manuals</li>
+        <li>End-user installation guides</li>
+        <li>Translating technical issues for non-technical stakeholders</li>
+        <li>Bridging hardware and software teams</li>
+      </ul>
+    </div>
+    <div class="skill-group" data-roles="software data qa iot support">
+      <h4>Currently Studying</h4>
+      <ul>
+        <li>Cloud security architecture</li>
+        <li>Blockchain &amp; decentralised identity</li>
+        <li>Intelligent transportation systems</li>
+        <li>Professional software engineering</li>
+        <li>Data analytics with Power BI</li>
       </ul>
     </div>
   </div>
+  <p class="filter-empty" id="skillsEmpty">No skill groups match that filter.</p>
 </div>
 
 <!-- EXPERIENCE & EDUCATION -->
 <div style="background: linear-gradient(180deg, var(--bg) 0%, #EBF5F8 100%);">
 <div class="section" id="experience">
   <div class="section-label">My Journey</div>
-  <div class="section-title">Experience & Education</div>
+  <div class="section-title">Experience &amp; Education</div>
   <div class="section-line"></div>
   <div class="timeline">
+
     <div class="tl-item">
       <div class="tl-top">
         <div>
           <h4>Master of Software Engineering</h4>
           <div class="tl-org">Yoobee College of Creative Innovation, Auckland</div>
         </div>
-        <span class="tl-date">Nov 2025 – Nov 2026</span>
+        <span class="tl-date">2025 &ndash; Nov 2026</span>
       </div>
-      <div class="tl-note">Grade Average: A · Courses: Professional Software Engineering · Cloud Security · Blockchain & Decentralised Identity · Intelligent Transportation Systems · Data Analytics with Power BI</div>
+      <div class="tl-note">Grade average: A. Courses: Professional Software Engineering, Cloud Security, Blockchain &amp; Decentralised Identity, Intelligent Transportation Systems, Data Analytics with Power BI.</div>
     </div>
+
     <div class="tl-item">
       <div class="tl-top">
         <div>
-          <h4>Senior IoT & Embedded Systems Engineer</h4>
+          <h4>Warehouse Operations Support</h4>
+          <div class="tl-org">My Food Bag, Auckland</div>
+        </div>
+        <span class="tl-date">Apr 2026 &ndash; Present</span>
+      </div>
+      <div class="tl-note">Order fulfilment, barcode scanning and inventory stocking in a high-volume warehouse, maintaining accuracy and pace alongside full-time MSE study.</div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-top">
+        <div>
+          <h4>Software Engineer &mdash; IoT &amp; Embedded Systems</h4>
           <div class="tl-org">DataSoft Systems Bangladesh Ltd.</div>
         </div>
-        <span class="tl-date">Nov 2018 – Oct 2025</span>
+        <span class="tl-date">Nov 2018 &ndash; Oct 2025</span>
       </div>
-      <div class="tl-note">Led field deployment of government bus validator networks, World Bank air quality monitoring systems, smart utility sensors for Dept. of Telecommunications, and commercial IoT automation systems.</div>
-      <div class="tl-award">🏆 Best IoT Engineer Award — Oct 2023</div>
+      <div class="tl-note">Delivered systems end to end, from firmware and PCB through cloud pipelines to Power BI reporting: government bus validator networks, World Bank-funded air quality monitoring, smart utility sensors for the Department of Telecommunications, and commercial IoT automation.</div>
+      <div class="tl-award">Best IoT Engineer Award &mdash; Oct 2023</div>
     </div>
+
     <div class="tl-item">
       <div class="tl-top">
         <div>
           <h4>Marketing Executive</h4>
           <div class="tl-org">Aamra Networks Limited, Bangladesh</div>
         </div>
-        <span class="tl-date">Nov 2017 – Oct 2018</span>
+        <span class="tl-date">Nov 2017 &ndash; Oct 2018</span>
       </div>
-      <div class="tl-note">IT services marketing campaigns, market research and competitor analysis for major telecom provider.</div>
+      <div class="tl-note">IT services marketing campaigns, market research and competitor analysis for a major telecom and network services provider.</div>
     </div>
+
     <div class="tl-item">
       <div class="tl-top">
         <div>
-          <h4>B.Sc. Electronics & Telecommunications Engineering</h4>
-          <div class="tl-org">East West University, Bangladesh · GPA 3.18 / 4.0</div>
+          <h4>B.Sc. Electronics &amp; Telecommunications Engineering</h4>
+          <div class="tl-org">East West University, Bangladesh &middot; GPA 3.18 / 4.0</div>
         </div>
-        <span class="tl-date">2012 – 2016</span>
+        <span class="tl-date">2012 &ndash; 2016</span>
       </div>
     </div>
+
   </div>
 </div>
 </div>
@@ -648,35 +734,35 @@
 <!-- CERTIFICATIONS -->
 <div class="section">
   <div class="section-label">Credentials</div>
-  <div class="section-title">Certifications & Awards</div>
+  <div class="section-title">Certifications &amp; Awards</div>
   <div class="section-line"></div>
   <div class="certs-grid">
     <div class="cert-card">
-      <div class="cert-icon">🏆</div>
+      <div class="cert-icon">&#127942;</div>
       <div class="cert-info">
         <h5>Best IoT Engineer Award</h5>
-        <p>DataSoft Systems Bangladesh · Oct 2023</p>
+        <p>DataSoft Systems Bangladesh &middot; Oct 2023</p>
       </div>
     </div>
     <div class="cert-card">
-      <div class="cert-icon">📡</div>
+      <div class="cert-icon">&#128225;</div>
       <div class="cert-info">
         <h5>IoT Engineering Training Programme</h5>
-        <p>ICT Division, Bangladesh · Apr 2017</p>
+        <p>ICT Division, Bangladesh &middot; Apr 2017</p>
       </div>
     </div>
     <div class="cert-card">
-      <div class="cert-icon">⚡</div>
+      <div class="cert-icon">&#9889;</div>
       <div class="cert-info">
-        <h5>Power & Energy Hackathon</h5>
-        <p>Ministry of Power, Energy & Mineral Resources · Nov 2017</p>
+        <h5>Power &amp; Energy Hackathon</h5>
+        <p>Ministry of Power, Energy &amp; Mineral Resources &middot; Nov 2017</p>
       </div>
     </div>
     <div class="cert-card">
-      <div class="cert-icon">🎓</div>
+      <div class="cert-icon">&#127891;</div>
       <div class="cert-info">
         <h5>Master of Software Engineering (in progress)</h5>
-        <p>Yoobee Colleges, Auckland · Graduating Nov 2026</p>
+        <p>Yoobee College of Creative Innovation &middot; Graduating Nov 2026</p>
       </div>
     </div>
   </div>
@@ -691,29 +777,35 @@
   <div class="contact-grid">
     <div class="contact-card highlight">
       <h4>Open to Opportunities</h4>
-      <p style="font-size:0.9rem; color:rgba(255,255,255,0.7); margin-bottom:0.5rem">Available from July 28, 2026 · Full-Time || Open to relocate · Full-time from November 2026 · Willing to relocate anywhere in NZ</p>
-      <p style="font-size:0.85rem; color:rgba(255,255,255,0.6)">Targeting: IoT Engineering · Embedded Systems · IT Support · QA Testing · Data Analysis</p>
+      <p style="font-size:0.9rem; margin-bottom:0.75rem">Available full-time from November 2026, with full New Zealand work rights. Willing to relocate anywhere in NZ.</p>
+      <ul class="role-list">
+        <li>Software Developer / Engineer</li>
+        <li>Data Analyst / BI Analyst</li>
+        <li>QA / Test Analyst</li>
+        <li>IoT &amp; Embedded Systems Engineer</li>
+        <li>IT Support / Technical Support</li>
+      </ul>
     </div>
     <div class="contact-card">
       <h4>Reach Me</h4>
       <div class="contact-row">
-        <svg fill="none" viewBox="0 0 24 24" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75"/></svg>
-        <a href="mailto:elahimashukh@gmail.com">elahimashukh@gmail.com</a>
+        <svg viewBox="0 0 24 24" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75"/></svg>
+        <a href="mailto:mashukelahi.nz@gmail.com">mashukelahi.nz@gmail.com</a>
       </div>
       <div class="contact-row">
-        <svg fill="none" viewBox="0 0 24 24" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 002.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 01-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 00-1.091-.852H4.5A2.25 2.25 0 002.25 6.75z"/></svg>
+        <svg viewBox="0 0 24 24" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 002.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 01-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 00-1.091-.852H4.5A2.25 2.25 0 002.25 6.75z"/></svg>
         <a href="tel:+64225332553">+64 22 533 2553</a>
       </div>
       <div class="contact-row">
-        <svg fill="none" viewBox="0 0 24 24" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M17.25 6.75L22.5 12l-5.25 5.25m-10.5 0L1.5 12l5.25-5.25m7.5-3l-4.5 16.5"/></svg>
-        <a href="https://github.com/Mashuk25" target="_blank">github.com/Mashuk25</a>
+        <svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+        <span><a href="https://github.com/Mashuk25" target="_blank" rel="noopener">github.com/Mashuk25</a> &nbsp;&middot;&nbsp; <a href="https://github.com/Mashuk048" target="_blank" rel="noopener">Mashuk048</a> (embedded)</span>
       </div>
       <div class="contact-row">
-        <svg fill="none" viewBox="0 0 24 24" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M20.25 14.15v4.25c0 1.094-.787 2.036-1.872 2.18-2.087.277-4.216.42-6.378.42s-4.291-.143-6.378-.42c-1.085-.144-1.872-1.086-1.872-2.18v-4.25m16.5 0a2.18 2.18 0 00.75-1.661V8.706c0-1.081-.768-2.015-1.837-2.175a48.114 48.114 0 00-3.413-.387m4.5 8.006c-.194.165-.42.295-.673.38A23.978 23.978 0 0112 15.75c-2.648 0-5.195-.429-7.577-1.22a2.016 2.016 0 01-.673-.38m0 0A2.18 2.18 0 013 12.489V8.706c0-1.081.768-2.015 1.837-2.175a48.111 48.111 0 013.413-.387m7.5 0V5.25A2.25 2.25 0 0013.5 3h-3a2.25 2.25 0 00-2.25 2.25v.894m7.5 0a48.667 48.667 0 00-7.5 0M12 12.75h.008v.008H12v-.008z"/></svg>
-        <a href="https://www.linkedin.com/in/mashuk-e-lahi" target="_blank">linkedin.com/in/mashuk-e-lahi</a>
+        <svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+        <a href="https://www.linkedin.com/in/mashuk-e-lahi" target="_blank" rel="noopener">linkedin.com/in/mashuk-e-lahi</a>
       </div>
       <div class="contact-row">
-        <svg fill="none" viewBox="0 0 24 24" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M15 10.5a3 3 0 11-6 0 3 3 0 016 0z"/><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z"/></svg>
+        <svg viewBox="0 0 24 24" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M15 10.5a3 3 0 11-6 0 3 3 0 016 0z"/><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z"/></svg>
         Auckland, New Zealand
       </div>
     </div>
@@ -722,50 +814,69 @@
 </div>
 
 <footer>
-  &copy; 2026 Md Mashuk E Lahi &nbsp;·&nbsp; IoT & Embedded Systems Engineer &nbsp;·&nbsp; Auckland, New Zealand
+  &copy; 2026 Md Mashuk E Lahi &nbsp;&middot;&nbsp; Software, Data &amp; Embedded Systems &nbsp;&middot;&nbsp; Auckland, New Zealand
 </footer>
 
 <script>
-  // Photo upload
-  document.getElementById('photoInput').addEventListener('change', function(e) {
-    const file = e.target.files[0];
-    if (!file) return;
-    const reader = new FileReader();
-    reader.onload = function(ev) {
-      const img = document.getElementById('heroPhoto');
-      const placeholder = document.getElementById('photoPlaceholder');
-      img.src = ev.target.result;
-      img.style.display = 'block';
-      placeholder.style.display = 'none';
-    };
-    reader.readAsDataURL(file);
+  // Role filtering, shared by projects and skills
+  function wireFilter(barId, listId, emptyId) {
+    var bar = document.getElementById(barId);
+    var list = document.getElementById(listId);
+    var empty = document.getElementById(emptyId);
+    if (!bar || !list) return;
+
+    bar.addEventListener('click', function (e) {
+      var btn = e.target.closest('.filter-btn');
+      if (!btn) return;
+      var filter = btn.getAttribute('data-filter');
+
+      bar.querySelectorAll('.filter-btn').forEach(function (b) {
+        b.classList.toggle('active', b === btn);
+      });
+
+      var visible = 0;
+      Array.prototype.forEach.call(list.children, function (card) {
+        var roles = (card.getAttribute('data-roles') || '').split(/\s+/);
+        var show = filter === 'all' || roles.indexOf(filter) !== -1;
+        card.style.display = show ? '' : 'none';
+        if (show) visible++;
+      });
+      if (empty) empty.style.display = visible === 0 ? 'block' : 'none';
+    });
+  }
+
+  wireFilter('projectFilter', 'projectsList', 'projectsEmpty');
+  wireFilter('skillFilter', 'skillsGrid', 'skillsEmpty');
+
+  // Nav highlight, limited to real page sections
+  var navTargets = ['about', 'projects', 'skills', 'experience', 'contact'];
+  var navLinks = document.querySelectorAll('nav a');
+  window.addEventListener('scroll', function () {
+    var current = '';
+    navTargets.forEach(function (id) {
+      var sec = document.getElementById(id);
+      if (sec && window.scrollY >= sec.offsetTop - 120) current = id;
+    });
+    navLinks.forEach(function (a) {
+      a.classList.toggle('active', a.getAttribute('href') === '#' + current);
+    });
   });
 
-  // Smooth scroll nav highlight
-  const sections = document.querySelectorAll('.section, [id]');
-  const navLinks = document.querySelectorAll('nav a');
-  window.addEventListener('scroll', () => {
-    let current = '';
-    document.querySelectorAll('[id]').forEach(sec => {
-      if (window.scrollY >= sec.offsetTop - 100) current = sec.id;
+  // Fade cards in on scroll
+  var observer = new IntersectionObserver(function (entries) {
+    entries.forEach(function (e) {
+      if (e.isIntersecting) {
+        e.target.style.opacity = '1';
+        observer.unobserve(e.target);
+      }
     });
-    navLinks.forEach(a => {
-      a.style.color = a.getAttribute('href') === '#' + current ? 'var(--teal)' : '';
-    });
-  });
+  }, { threshold: 0.08 });
 
-  // Animate stats on scroll
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(e => {
-      if (e.isIntersecting) e.target.style.opacity = '1';
-    });
-  }, { threshold: 0.1 });
-  document.querySelectorAll('.project-card, .tl-item, .cert-card').forEach(el => {
+  document.querySelectorAll('.project-card, .tl-item, .cert-card').forEach(function (el) {
     el.style.opacity = '0';
     el.style.transition = 'opacity 0.5s ease';
     observer.observe(el);
   });
 </script>
-
 </body>
 </html>
