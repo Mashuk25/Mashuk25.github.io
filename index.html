@@ -5,6 +5,13 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Md Mashuk E Lahi — Engineer · Software, Data & Embedded Systems</title>
 <meta name="description" content="Engineer with 7 years across software, data, QA and embedded systems. Completing a Master of Software Engineering in Auckland, graduating November 2026.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://mashuk25.github.io/">
+<meta property="og:title" content="Md Mashuk E Lahi — Software, Data &amp; Embedded Systems">
+<meta property="og:description" content="Engineer with 7 years across software, data, QA and embedded systems. Master of Software Engineering, Auckland, graduating November 2026.">
+<meta property="og:image" content="https://mashuk25.github.io/photo.jpg">
+<meta name="twitter:card" content="summary">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='20' fill='%231E3A4F'/%3E%3Ctext x='50' y='66' font-size='46' font-family='Segoe UI,Arial,sans-serif' font-weight='700' text-anchor='middle' fill='%234AABB8'%3EM%3C/text%3E%3C/svg%3E">
 <style>
   *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
   :root {
@@ -209,6 +216,18 @@
   .project-link:hover { background: var(--teal-light); border-color: var(--teal); }
   .project-link svg { width: 14px; height: 14px; }
 
+  /* ── PROJECT SCREENSHOTS ── */
+  .project-gallery { display: grid; grid-template-columns: 1fr 1fr; gap: 0.9rem; margin-bottom: 1.5rem; }
+  .project-gallery figure { margin: 0; }
+  .project-gallery figure.main { grid-column: 1 / -1; }
+  .project-gallery a {
+    display: block; border: 1px solid var(--border); border-radius: 8px;
+    overflow: hidden; background: var(--white);
+  }
+  .project-gallery a:focus-visible { outline: 3px solid var(--teal); outline-offset: 2px; }
+  .project-gallery img { width: 100%; height: auto; display: block; }
+  .project-gallery figcaption { font-size: 0.78rem; color: var(--muted); margin-top: 0.4rem; line-height: 1.5; }
+
   /* ── SKILLS ── */
   .skills-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1rem; }
   .skill-group { background: var(--card-bg); border: 1px solid var(--border); border-radius: 12px; padding: 1.4rem; }
@@ -277,6 +296,13 @@
 
   footer { text-align: center; padding: 2rem; font-size: 0.78rem; color: var(--muted); border-top: 1px solid var(--border); }
 
+  /* ── REDUCED MOTION ── */
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    .hero-scroll, .avail-dot { animation: none; }
+    .project-card, .project-card:hover, .btn-primary:hover { transition: none; transform: none; }
+  }
+
   /* ── RESPONSIVE ── */
   @media (max-width: 768px) {
     .hero-inner { flex-direction: column; text-align: center; gap: 2rem; }
@@ -286,6 +312,7 @@
     .hero-text h1 { font-size: 2rem; }
     .about-grid { grid-template-columns: 1fr; }
     .contact-grid { grid-template-columns: 1fr; }
+    .project-gallery { grid-template-columns: 1fr; }
     .stat { padding: 1rem 1.5rem; }
     nav ul { gap: 1rem; }
     .nav-cta { display: none; }
@@ -324,7 +351,7 @@
         <span class="badge accent">Best IoT Engineer 2023</span>
         <span class="badge">MSE · Graduating Nov 2026</span>
         <span class="badge">A grade average</span>
-        <span class="badge">Full NZ work rights (from Nov 2026)</span>
+        <span class="badge">Eligible for Post-Study Work Visa (Nov 2026)</span>
       </div>
       <div class="hero-btns">
         <a href="#projects" class="btn btn-primary">View Projects</a>
@@ -340,7 +367,7 @@
 <div class="stats-bar">
   <div class="stat"><div class="stat-num">7</div><div class="stat-label">Years Engineering Experience</div></div>
   <div class="stat"><div class="stat-num">450</div><div class="stat-label">Devices Deployed &amp; Validated</div></div>
-  <div class="stat"><div class="stat-num">3.4M</div><div class="stat-label">Data Points / Day Processed</div></div>
+  <div class="stat"><div class="stat-num">40+</div><div class="stat-label">Monitoring Nodes Deployed</div></div>
   <div class="stat"><div class="stat-num">A</div><div class="stat-label">MSE Grade Average</div></div>
 </div>
 
@@ -354,10 +381,10 @@
       <div class="avail-pill"><span class="avail-dot"></span> Available November 2026 · Full-time · Open to relocating anywhere in NZ</div>
       <p>I'm an engineer with <strong>7 years of hands-on experience</strong> spanning software development, data pipelines and reporting, QA and firmware validation, and embedded hardware. Most of that work was delivered for government and World Bank-funded clients in Bangladesh, where I built the full stack of a system rather than one slice of it: the device, the firmware, the cloud pipeline, the dashboard, and the documentation the client actually used.</p>
       <p>In late 2025 I moved to Auckland and started a <strong>Master of Software Engineering at Yoobee College of Creative Innovation</strong>, graduating November 2026 with an A average. During the degree I solo-built and deployed <strong>SureSource</strong>, a live B2B marketplace, covering architecture, backend, frontend, database and cloud deployment on my own.</p>
-      <p>I'm targeting graduate and internship roles in New Zealand. Not because my experience is entry level, but because employers here reasonably want local proof before extending senior trust. I'm here to earn it.</p>
+      <p>I'm targeting graduate and early-career roles in New Zealand. I bring seven years of delivery experience, and I understand employers here want local proof before extending senior trust. I'm here to earn it.</p>
     </div>
     <div class="about-card">
-      <h4>Currently Studying</h4>
+      <h4>Master&rsquo;s Coursework</h4>
       <ul>
         <li>Cloud Security Architecture</li>
         <li>Data Analytics with Power BI</li>
@@ -434,11 +461,99 @@
       </div>
     </div>
 
-    <!-- Air Quality + Power BI -->
+    <!-- MSE803 Fitness App Engagement -->
+    <div class="project-card" data-roles="data">
+      <div class="project-head">
+        <div>
+          <h3>Fitness App User Engagement &mdash; Analysis, Prediction &amp; Fairness Audit</h3>
+          <p>MSE803 Data Analytics coursework · Individual project · 2026</p>
+        </div>
+        <span class="proj-badge">POWER BI + PYTHON</span>
+      </div>
+      <div class="project-body">
+        <div class="project-gallery">
+          <figure class="main">
+            <a href="./images/mse803-engagement-overview.png" target="_blank" rel="noopener">
+              <img src="./images/mse803-engagement-overview.png" alt="Power BI dashboard with KPI cards, average sessions by activity level and age band, and a sessions versus distance scatter plot" loading="lazy">
+            </a>
+            <figcaption>Power BI engagement overview with KPI cards, activity and age-band breakdowns, and slicers for gender, location and age band.</figcaption>
+          </figure>
+          <figure>
+            <a href="./images/mse803-models-ethics.png" target="_blank" rel="noopener">
+              <img src="./images/mse803-models-ethics.png" alt="Power BI dashboard showing hypothesis test results, model accuracy, the rejected three-cluster segmentation and prediction error by subgroup" loading="lazy">
+            </a>
+            <figcaption>Power BI dashboard summarising hypothesis tests, model accuracy, the rejected segmentation and prediction error by subgroup.</figcaption>
+          </figure>
+          <figure>
+            <a href="./images/mse803-k3-rejected.png" target="_blank" rel="noopener">
+              <img src="./images/mse803-k3-rejected.png" alt="Chart comparing mean age and mean app sessions across three clusters" loading="lazy">
+            </a>
+            <figcaption>Why k = 3 was rejected: two clusters 21.7 years apart in age showed the same behaviour.</figcaption>
+          </figure>
+        </div>
+        <p class="project-desc">Analysed 5,000 user records from a mobile fitness-tracking app to find what actually drives engagement, and whether the app could personalise without relying on sensitive personal data. I used Python in Google Colab for the statistics and modelling, then exported the cleaned data and results into interactive Power BI dashboards so non-technical readers could explore the findings themselves.</p>
+        <p class="project-desc">The work covered a data quality audit, outlier screening with three methods, hypothesis testing with effect sizes, regression and classification models, and k-means segmentation. Activity level explained about 89% of the variation in app sessions, while age, gender and location had almost no predictive value. A Random Forest reached R&sup2; = 0.936, but I recommended the simpler linear model (R&sup2; = 0.924): the accuracy gain was under one session per user per year, and the linear model is far easier to explain to the people making decisions.</p>
+        <p class="project-desc">The most useful finding came from segmentation. A three-cluster model looked valid, but it split low-engagement users purely by age while their behaviour stayed the same. I rejected it as a hidden discriminatory rule, and backed this with a fairness audit and ethical guidelines based on NZ's Privacy Act 2020 and M&#257;ori data sovereignty principles.</p>
+        <div class="tags">
+          <span class="tag">Power BI</span><span class="tag">Python</span><span class="tag">Pandas</span>
+          <span class="tag">scikit-learn</span><span class="tag">SciPy</span><span class="tag">Google Colab</span>
+          <span class="tag">Hypothesis Testing</span><span class="tag">Regression</span><span class="tag">Random Forest</span>
+          <span class="tag">K-means</span><span class="tag">Data Quality Audit</span><span class="tag">Fairness Audit</span>
+        </div>
+        <div class="project-meta">
+          <div class="meta-item"><div class="meta-label">Type</div><div class="meta-val">Data analytics case study</div></div>
+          <div class="meta-item"><div class="meta-label">Records</div><div class="meta-val">5,000 users</div></div>
+          <div class="meta-item"><div class="meta-label">Best model</div><div class="meta-val">R&sup2; 0.936</div></div>
+          <div class="meta-item"><div class="meta-label">Year</div><div class="meta-val">2026</div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- LoadCast -->
+    <div class="project-card" data-roles="data software">
+      <div class="project-head">
+        <div>
+          <h3>LoadCast &mdash; Household Electricity Load Forecasting</h3>
+          <p>MSE907 Capstone · Sole developer · Completing Nov 2026</p>
+        </div>
+        <span class="proj-badge">DATA + ML</span>
+      </div>
+      <div class="project-body">
+        <div class="project-gallery">
+          <figure class="main">
+            <a href="./images/loadcast-forecast.png" target="_blank" rel="noopener">
+              <img src="./images/loadcast-forecast.png" alt="Line chart of actual household electricity demand and the TFT forecast over four days, with the forecast following the daily demand peaks" loading="lazy">
+            </a>
+            <figcaption>TFT forecast against actual demand for UK-DALE House 1 across four days of the test period.</figcaption>
+          </figure>
+          <figure class="main">
+            <a href="./images/loadcast-comparison.png" target="_blank" rel="noopener">
+              <img src="./images/loadcast-comparison.png" alt="Bar charts comparing LSTM and two TFT variants on peak error and R squared, averaged over five houses" loading="lazy">
+            </a>
+            <figcaption>Five-house average. The peak-tuned TFT has lower peak error; the LSTM keeps a slightly better overall R&sup2;. &ldquo;wmse&rdquo; and &ldquo;focal&rdquo; are two peak-weighted loss functions.</figcaption>
+          </figure>
+        </div>
+        <p class="project-desc">LoadCast forecasts a household&rsquo;s electricity demand 15 minutes ahead, with a focus on the sharp peaks that matter most for grid and home-battery planning. I built a Temporal Fusion Transformer (TFT) in PyTorch and benchmarked it against an LSTM baseline, re-implemented from Kong et al. (2019), across all five houses of the open UK-DALE dataset. Every model ran through the same data pipeline and test splits so the comparison is fair.</p>
+        <p class="project-desc">Standard training tends to smooth peaks away, so I tuned two peak-weighted loss functions (weighted MSE and focal) and added checks for false peak alarms. A peak-tuned TFT beat the LSTM on peak error in four of the five houses. On the two largest houses, which hold about 94% of the data, the final model (weighted MSE) beat the LSTM on peak error, R&sup2; and RMSE at the same time. Averaged across all five houses, the LSTM still keeps a slightly better overall fit (R&sup2; 0.484 vs 0.466) and lower percentage error, so the TFT is the better choice when catching demand peaks matters most.</p>
+        <div class="tags">
+          <span class="tag">Python</span><span class="tag">PyTorch</span><span class="tag">PyTorch Forecasting</span>
+          <span class="tag">PyTorch Lightning</span><span class="tag">Temporal Fusion Transformer</span><span class="tag">LSTM</span>
+          <span class="tag">Pandas</span><span class="tag">Time-Series Forecasting</span><span class="tag">Custom Loss Functions</span>
+        </div>
+        <div class="project-meta">
+          <div class="meta-item"><div class="meta-label">Dataset</div><div class="meta-val">UK-DALE, 5 houses</div></div>
+          <div class="meta-item"><div class="meta-label">Horizon</div><div class="meta-val">15 min ahead</div></div>
+          <div class="meta-item"><div class="meta-label">Role</div><div class="meta-val">Sole developer</div></div>
+          <div class="meta-item"><div class="meta-label">Status</div><div class="meta-val">Completing Nov 2026</div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Air Quality -->
     <div class="project-card" data-roles="data iot qa support">
       <div class="project-head">
         <div>
-          <h3>Air Quality Monitoring Network &amp; Reporting Pipeline</h3>
+          <h3>Air Quality Monitoring Network &mdash; Hardware, Calibration &amp; Data Accuracy</h3>
           <p>DataSoft Systems · World Bank-funded · Government stakeholders</p>
         </div>
         <span class="proj-badge">DATA + FIELD IoT</span>
@@ -453,8 +568,8 @@
         <div class="project-meta">
           <div class="meta-item"><div class="meta-label">Client</div><div class="meta-val">World Bank-funded</div></div>
           <div class="meta-item"><div class="meta-label">Scale</div><div class="meta-val">40+ nodes</div></div>
-          <div class="meta-item"><div class="meta-label">Volume</div><div class="meta-val">3.4M readings/day</div></div>
-          <div class="meta-item"><div class="meta-label">Role</div><div class="meta-val">Hardware &amp; data lead</div></div>
+          <div class="meta-item"><div class="meta-label">Data generated</div><div class="meta-val">3.4M readings/day</div></div>
+          <div class="meta-item"><div class="meta-label">Role</div><div class="meta-val">Hardware &amp; field lead</div></div>
         </div>
       </div>
     </div>
@@ -592,12 +707,12 @@
     <div class="skill-group" data-roles="data">
       <h4>Data &amp; Analytics</h4>
       <ul>
-        <li>Microsoft Power BI (production pipelines)</li>
-        <li>Data cleaning &amp; deduplication</li>
-        <li>Dropout gap &amp; calibration drift correction</li>
-        <li>Anomaly detection &amp; threshold alerting</li>
-        <li>Automated stakeholder reporting</li>
-        <li>PostgreSQL &middot; telemetry pipelines</li>
+        <li>Microsoft Power BI dashboards</li>
+        <li>Python: Pandas, scikit-learn, SciPy</li>
+        <li>Statistical testing &amp; regression</li>
+        <li>Time-series forecasting (PyTorch)</li>
+        <li>Data quality audits &amp; cleaning</li>
+        <li>Sensor data filtering &amp; calibration</li>
         <li>Dashboard design for non-technical users</li>
       </ul>
     </div>
@@ -650,7 +765,7 @@
       </ul>
     </div>
     <div class="skill-group" data-roles="software data qa iot support">
-      <h4>Currently Studying</h4>
+      <h4>Master&rsquo;s Coursework</h4>
       <ul>
         <li>Cloud security architecture</li>
         <li>Blockchain &amp; decentralised identity</li>
@@ -701,7 +816,7 @@
         </div>
         <span class="tl-date">Nov 2018 &ndash; Oct 2025</span>
       </div>
-      <div class="tl-note">Delivered systems end to end, from firmware and PCB through cloud pipelines to Power BI reporting: government bus validator networks, World Bank-funded air quality monitoring, smart utility sensors for the Department of Telecommunications, and commercial IoT automation.</div>
+      <div class="tl-note">Delivered systems end to end, from firmware and PCB design through device testing to cloud data pipelines and dashboards: government bus validator networks, World Bank-funded air quality monitoring, smart utility sensors for the Department of Telecommunications, and commercial IoT automation.</div>
       <div class="tl-award">Best IoT Engineer Award &mdash; Oct 2023</div>
     </div>
 
@@ -776,7 +891,7 @@
   <div class="contact-grid">
     <div class="contact-card highlight">
       <h4>Open to Opportunities</h4>
-      <p style="font-size:0.9rem; margin-bottom:0.75rem">Available full-time from November 2026, with full New Zealand work rights. Willing to relocate anywhere in NZ.</p>
+      <p style="font-size:0.9rem; margin-bottom:0.75rem">Available full-time from November 2026, when I complete my Master's and become eligible for a Post-Study Work Visa (open work rights). Willing to relocate anywhere in NZ.</p>
       <ul class="role-list">
         <li>Software Developer / Engineer</li>
         <li>Data Analyst / BI Analyst</li>
@@ -871,7 +986,8 @@
     });
   }, { threshold: 0.08 });
 
-  document.querySelectorAll('.project-card, .tl-item, .cert-card').forEach(function (el) {
+  var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (!reduceMotion) document.querySelectorAll('.project-card, .tl-item, .cert-card').forEach(function (el) {
     el.style.opacity = '0';
     el.style.transition = 'opacity 0.5s ease';
     observer.observe(el);
